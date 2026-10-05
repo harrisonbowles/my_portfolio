@@ -6,7 +6,7 @@
 # hxw831@miami.edu
 # 9/29/26
 #
-# This project will read in, clean, and visualize best track and model data for
+# This script will read in and clean best track and model data for
 # Hurricane Ian, 2022. Data provided by the NHC.
 # 
 # Best Track: https://ftp.nhc.noaa.gov/atcf/btk/
