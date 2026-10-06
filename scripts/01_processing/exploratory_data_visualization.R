@@ -22,6 +22,7 @@
 ## Load packages ---------------------------------------------------------------
 library(tidyverse)
 library(janitor)
+library(rnaturalearth)
 
 ## Load data -------------------------------------------------------------------
 #Read in Ian Best Track data, and convert to a tibble
@@ -40,6 +41,8 @@ ships_1 <- read.csv("data/processed/ships_1.rds") |>
 
 
 # VISUALIZE ####################################################################
+
+#Need help plotting with ggplot; creating basemap and adjusting coordinate bounds
 
 ## Another step ----------------------------------------------------------------
 
