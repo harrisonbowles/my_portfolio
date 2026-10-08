@@ -86,7 +86,7 @@ p <- ggplot(data = USA_states) +
 
   theme(legend.position = "none")                  #Remove legend (its HUGE)
 
-p
+#p
 
   
   
@@ -166,36 +166,42 @@ e3 <- ggplot(data = model_bt,                       #latlon
 e1_cow = plot_grid(e1,
                    obs_wind,                    #Wind error
                    obs_pres,
-                   e1,
                    ncol = 1,
                    rel_heights = c(1.75, 1, 1))
-e1_cow
+#e1_cow
 
 e2_cow = plot_grid(e2,
                    obs_wind,                    #Pres Error
                    obs_pres,
-                   e2,
                    ncol = 1,
                    rel_heights = c(1.75, 1, 1))
-e2_cow
+#e2_cow
                    
 e3_cow = plot_grid(e3,
                    obs_wind,                    #latlon Error
                    obs_pres,
                    ncol = 1,
                    rel_heights = c(1.75, 1, 1))
-e3_cow
+#e3_cow
 
 # EXPORT #######################################################################
 ggsave(p,
-       filename = "results/img/plot.png") #Save spatial plot
+       filename = "results/img/plot.png",
+       width = 8,
+       height = 10) #Save spatial plot
 
 ggsave(e1_cow,
-       filename = "results/img/wind_cow.png") #Save wind error plot
+       filename = "results/img/wind_cow.png",
+       width = 9,
+       height = 12) #Save wind error plot
 ggsave(e2_cow,
-       filename = "results/img/pres_cow.png") #Save pressure error plot
+       filename = "results/img/pres_cow.png",
+       width = 9,
+       height = 12) #Save pressure error plot
 ggsave(e3_cow,
-       filename = "results/img/pos_cow.png") #Save position error plot
+       filename = "results/img/pos_cow.png",
+       width = 9,
+       height = 12) #Save position error plot
 
 ggsave(e1,
        filename = "results/img/wind_error.png") #Save original error plots
