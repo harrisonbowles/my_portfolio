@@ -127,8 +127,7 @@ e1 <- ggplot(data = model_bt,                       #vmax
     labs(
       x = NULL,
       y = "Error in Vmax\n(kts)",
-      title = "Error in Max Wind (kts), with Observed Min Pressure (hPa)\nand Observed Max Wind (kts)",
-      caption = "Data Sources: https://ftp.nhc.noaa.gov/atcf/btk/\nhttps://ftp.nhc.noaa.gov/atcf/archive/2022/"
+      title = "Error in Max Wind (kts), with Observed Min Pressure (hPa)\nand Observed Max Wind (kts)"
   ) +
   theme(plot.title = element_text(size = 14,
                                   face = "bold"))
@@ -141,8 +140,7 @@ e2 <- ggplot(data = model_bt,                       #Min Pressure
   labs(
     x = NULL,
     y = "Error in Pressure (hPa)",
-    title = "Error in Min Pressure (hPa), with Observed Min Pressure (hPa)\nand Observed Max Wind (kts)",
-    caption = "Data Sources: https://ftp.nhc.noaa.gov/atcf/btk/\nhttps://ftp.nhc.noaa.gov/atcf/archive/2022/"
+    title = "Error in Min Pressure (hPa), with Observed Min Pressure (hPa)\nand Observed Max Wind (kts)"
   ) +
   theme(plot.title = element_text(size = 14,
                                   face = "bold"))
