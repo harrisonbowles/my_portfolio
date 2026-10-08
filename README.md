@@ -21,9 +21,16 @@ Model: https://ftp.nhc.noaa.gov/atcf/archive/2022/
 
 # Project Structure
 data/ : This will house all data used for the project
+
   raw/: untouched raw data
+  
   processed/: data that has been tidied/cleaned
+  
+  
 scripts/ : This will house all R scripts used for analysis
+
   01_processing/: This will house scripts to clean and tidy datasets for analysis
+  
   02_analysis/: This will house scripts to visuazlie and analyze processed data
+  
 results/ : This will house all output figures and tables
