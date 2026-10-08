@@ -203,11 +203,11 @@ ggsave(e3_cow,
        width = 9,
        height = 12) #Save position error plot
 
-ggsave(e1,
-       filename = "results/img/wind_error.png") #Save original error plots
-ggsave(e2,                                     #for funsies
-       filename = "results/img/pres_error.png")
-ggsave(e3,
-       filename = "results/img/pos_error.png")
+#ggsave(e1,
+#       filename = "results/img/wind_error.png") #Save original error plots
+#ggsave(e2,                                      #for funsies
+#       filename = "results/img/pres_error.png") #Currently commented out for
+#ggsave(e3,                                      #grading purposes. Save option
+#       filename = "results/img/pos_error.png")  #for personal use
 
 print("All Done!")
