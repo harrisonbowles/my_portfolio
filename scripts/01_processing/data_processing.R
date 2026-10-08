@@ -109,6 +109,7 @@ model_bt <- left_join(best_track,
            remove = FALSE) |> 
   mutate(lat_error = abs(obs_lat - model_lat)) |> 
   mutate(lon_error = abs(obs_lon - model_lon)) |> 
+  mutate(xy_err = sqrt((lat_error)^2 + (lon_error)^2 )) |> 
   mutate(vmax_err = abs(model_vmax - obs_vmax)) |> 
   mutate(pres_err = abs(model_min_pressure - obs_min_pres))
 

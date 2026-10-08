@@ -10,7 +10,9 @@ best track and model data, provided by the NHC. It then cleans and tidies that
 data, including creating a valid time for each data point,
 and exports it to be visualized and analyzed. It currently can create a basic
 plot of model tracks and best track data given a date and time, as well as time
-series plots of error in max wind.
+series plots of error in max wind, min pressure, and latlon coordinates. I have
+plotted these variables against the observed max wind and minimum pressure to
+illustrate how the error changes with the strength of the storm.
 
 The goal of this project is to plot both model and observed hurricane track and
 intensity data, and create an error score from the two datasets. The goal is to

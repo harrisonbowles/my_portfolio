@@ -25,7 +25,8 @@ library(janitor)
 library(rnaturalearth)
 library(ggplot2)
 library(raster)
-library(mapview)
+library(sf)
+library(cowplot)
 
 ## Load data -------------------------------------------------------------------
 #Read in model and best track data
@@ -49,11 +50,6 @@ model_runs <- model_bt |>
   filter(datetime == t) |> 
   distinct(model, datetime, forecast_hour, model_lon, model_lat,
            model_vmax, model_min_pressure)
-
-#lat lon error calculation
-#xy_err <- abs(pointDistance(c(model_bt$obs_lon, model_bt$obs_lat), 
-#                            c(model_bt$model_lon, model_bt$model_lat),
-#                        lonlat = TRUE))
   
 
 # VISUALIZE ####################################################################
@@ -73,7 +69,8 @@ p <- ggplot(data = USA_states) +
   geom_path(data = model_runs,      #paths for model runs
           aes(x= model_lon,
               y = model_lat,
-              color = model)) +
+              color = model,
+              show.legend = FALSE)) +
   geom_sf(data = obs,               #points for observed track
           aes(fill = "black",
               size = 7)) +
@@ -83,66 +80,128 @@ p <- ggplot(data = USA_states) +
   labs(                                            #Labels
     x = "Longitude",
     y = "Latitude",
-    title = t
-  ) 
+    title = t,
+    caption = "Data Sources: https://ftp.nhc.noaa.gov/atcf/btk/\nhttps://ftp.nhc.noaa.gov/atcf/archive/2022/"
+  ) +
+
+  theme(legend.position = "none")                  #Remove legend (its HUGE)
+
+p
+
   
-mapview(USA_States)
-mapview(obs)
+  
 
-  #theme(legend.position = "none")                  #Remove legend (its HUGE)
+###Create plots of error
 
-#p
+#Create plots of obs to show storm strength
+obs_wind <- ggplot(data = model_bt,          #Wind
+              aes(x = valid_time)) +
+  geom_line(aes(y = obs_vmax,
+                color = "blue"),
+            show.legend = FALSE) +
+  theme_bw() +
+  labs(x = NULL,
+       y = "Max Wind Speed\n(kts)") +
+  theme(axis.title.y = element_text(size = 9))
 
+obs_pres <- ggplot(data = model_bt,         #Pressure
+                   aes(x = valid_time)) +
+  geom_line(aes(y = obs_min_pres,
+                color = "red"),
+            show.legend = FALSE) +
+  theme_bw() +
+  labs(x = "Date",
+       y = "Minimum Pressure\n(hPa)",
+       caption = "Data Sources: https://ftp.nhc.noaa.gov/atcf/btk/\nhttps://ftp.nhc.noaa.gov/atcf/archive/2022/") +
+  theme(axis.title.y = element_text(size = 9))
 
-#Create plots of error
 
 e1 <- ggplot(data = model_bt,                       #vmax
              aes(x = valid_time)) +
-    geom_smooth(aes(y=vmax_err, color = model), se = FALSE) +
-    geom_smooth(aes, y = model_bt$obs_vmax, 
-                     fill = "black", 
-                     linetype = "dashed",
-                     size = 10
-                     ) +
-    #geom_vline(xintercept = ())
+    geom_smooth(aes(y=vmax_err, color = model,
+                    ), show.legend = FALSE,
+                se = FALSE, alpha = 0.5) +
+    theme_bw() +
+    #geom_vline(xintercept = )+
     theme(legend.position = "none") +
     labs(
-      x = "Date",
-      y = "Error in Vmax (kts)"
-  )
+      x = NULL,
+      y = "Error in Vmax\n(kts)",
+      title = "Error in Max Wind (kts), with Observed Min Pressure (hPa)\nand Observed Max Wind (kts)",
+      caption = "Data Sources: https://ftp.nhc.noaa.gov/atcf/btk/\nhttps://ftp.nhc.noaa.gov/atcf/archive/2022/"
+  ) +
+  theme(plot.title = element_text(size = 14,
+                                  face = "bold"))
 
-e1
-
-e1 <- ggplot(data = model_bt, 
+e2 <- ggplot(data = model_bt,                       #Min Pressure
              aes(x = valid_time)) +
-  geom_smooth(aes(y=vmax_err, color = model, se = FALSE, alpha = 0.1)) +
+  geom_smooth(aes(y = pres_err, color = model),
+               se = FALSE) +
   theme(legend.position = "none") +
   labs(
-    x = "Date",
-    y = "Error in Vmax (kts)"
-  )
+    x = NULL,
+    y = "Error in Pressure (hPa)",
+    title = "Error in Min Pressure (hPa), with Observed Min Pressure (hPa)\nand Observed Max Wind (kts)",
+    caption = "Data Sources: https://ftp.nhc.noaa.gov/atcf/btk/\nhttps://ftp.nhc.noaa.gov/atcf/archive/2022/"
+  ) +
+  theme(plot.title = element_text(size = 14,
+                                  face = "bold"))
 
 
-
-e3 <- ggplot(data = model_bt, 
+e3 <- ggplot(data = model_bt,                       #latlon
              aes(x = valid_time)) +
-  geom_smooth(aes(y=press_err, color = model, alpha = 0.1), , se = FALSE) +
+  geom_smooth(aes(y=xy_err, color = model, alpha = 0.1), , se = FALSE) +
   theme(legend.position = "none") +
   labs(
-    x = "Date",
-    y = "Error in Vmax (kts)"
-  )
+    x = NULL,
+    y = "Error in Position",
+    title = "Error in Position, with Observed Min Pressure (hPa)\nand Observed Max Wind (kts)"
+  ) +
+  theme(plot.title = element_text(size = 14,
+                                  face = "bold"))
 
-#e3
 
 
+#Cow plots
+e1_cow = plot_grid(e1,
+                   obs_wind,                    #Wind error
+                   obs_pres,
+                   e1,
+                   ncol = 1,
+                   rel_heights = c(1.75, 1, 1))
+e1_cow
 
-## Another step ----------------------------------------------------------------
-
-# ANALYSIS #####################################################################
-
+e2_cow = plot_grid(e2,
+                   obs_wind,                    #Pres Error
+                   obs_pres,
+                   e2,
+                   ncol = 1,
+                   rel_heights = c(1.75, 1, 1))
+e2_cow
+                   
+e3_cow = plot_grid(e3,
+                   obs_wind,                    #latlon Error
+                   obs_pres,
+                   ncol = 1,
+                   rel_heights = c(1.75, 1, 1))
+e3_cow
 
 # EXPORT #######################################################################
+ggsave(p,
+       filename = "results/img/plot.png") #Save spatial plot
 
+ggsave(e1_cow,
+       filename = "results/img/wind_cow.png") #Save wind error plot
+ggsave(e2_cow,
+       filename = "results/img/pres_cow.png") #Save pressure error plot
+ggsave(e3_cow,
+       filename = "results/img/pos_cow.png") #Save position error plot
+
+ggsave(e1,
+       filename = "result/img/wind_error.png") #Save original error plots
+ggsave(e2,                                     #for funsies
+       filename = "result/img/pres_error.png")
+ggsave(e3,
+       filename = "result/img/pos_error.png")
 
 print("All Done!")
