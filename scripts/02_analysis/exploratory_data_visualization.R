@@ -198,10 +198,10 @@ ggsave(e3_cow,
        filename = "results/img/pos_cow.png") #Save position error plot
 
 ggsave(e1,
-       filename = "result/img/wind_error.png") #Save original error plots
+       filename = "results/img/wind_error.png") #Save original error plots
 ggsave(e2,                                     #for funsies
-       filename = "result/img/pres_error.png")
+       filename = "results/img/pres_error.png")
 ggsave(e3,
-       filename = "result/img/pos_error.png")
+       filename = "results/img/pos_error.png")
 
 print("All Done!")
