@@ -4,11 +4,14 @@
 #
 # Harrison Woodson Bowles
 # hxw831@miami.edu
-# 9/29/26
+# 10/5/2026
 #
-# This project will read in, clean, and visualize best track and model data for
-# Hurricane Ian, 2022. Data provided by the NHC.
-# 
+# In this script I will use the data produced by data_processing.R to generate
+# some maps of my data, as well as some statistical analyses.
+#
+#
+# Data provided by the NHC.
+#
 # Best Track: https://ftp.nhc.noaa.gov/atcf/btk/
 # Model: https://ftp.nhc.noaa.gov/atcf/archive/2022/
 #
@@ -19,40 +22,118 @@
 ## Load packages ---------------------------------------------------------------
 library(tidyverse)
 library(janitor)
-library(sf)
 library(rnaturalearth)
+library(ggplot2)
+library(raster)
 library(mapview)
 
 ## Load data -------------------------------------------------------------------
-best_track <- read.csv("data/raw/Observed/Ian_2022_HURDAT.csv") |> 
-  as_tibble() #Read in Ian Best Track data, and convert to a tibble
+#Read in model and best track data
+model_bt <- read_rds("data/processed/model_bt.rds")
 
-model_data <- read.csv("data/raw/Model/ian_model.dat/ian_model.dat") |> 
-  as_tibble() #Read in Ian model data, and convert to a tibble
+
+# PROCESSING ###################################################################
+#Set a run time
+t = as.POSIXct("2022-09-25 12:00", tz = "UTC") 
+
+#Create an object for observed track with geometry
+obs <- model_bt |> 
+  st_drop_geometry() |> 
+  distinct(valid_time, obs_lon, obs_lat) |> 
+  st_as_sf(coords = c("obs_lon", "obs_lat"),
+           crs = 4326, remove = FALSE)
+
+#Create an object for model runs with no geometry  
+model_runs <- model_bt |> 
+  st_drop_geometry() |> 
+  filter(datetime == t) |> 
+  distinct(model, datetime, forecast_hour, model_lon, model_lat,
+           model_vmax, model_min_pressure)
+
+#lat lon error calculation
+#xy_err <- abs(pointDistance(c(model_bt$obs_lon, model_bt$obs_lat), 
+#                            c(model_bt$model_lon, model_bt$model_lat),
+#                        lonlat = TRUE))
+  
 
 # VISUALIZE ####################################################################
+#Let's create our "Basemap"
+USA_states <- ne_states(geounit = "United States of America")
+cuba <- ne_countries(scale = 110L, country = "Cuba")
+mexico <- ne_countries(scale = 110L, country = "Mexico")
+coastline <- ne_coastline(scale = 110L)
 
-p <- ggplot(data = USA) +
-  geom_sf(fill = "gray90")
-
-p
-
-
-
-#coast <- rnaturalearth::ne_coastline(scale = 50)
-#USA <- rnaturalearth::ne_states(geounit = "United States of America")
-
-#mapviewOptions(basemaps = c("Esri.WorldShadedRelief", "Esri.WorldImagery", "CartoDB.Positron"))
-#ggplot(USA)
-  #ggplot(best_track, xcol = "Lon", ycol = 'Lat', crs = 4326, legend = TRUE, color = 'red') +
-  #ggplot(day_one_hafs, xcol = "long", ycol = 'lat', crs = 4326, legend = TRUE, color = "yellow") +
-  #ggplot(day_one_ships, xcol = "long", ycol = 'lat', crs = 4326, legend = TRUE, color = "lightgreen")
+#Make our plot
+p <- ggplot(data = USA_states) +
+  geom_sf(data = cuba) +
+  geom_sf(data = mexico) +
+  geom_sf(data = coastline) +
+  geom_sf(fill = "gray80") +
   
+  geom_path(data = model_runs,      #paths for model runs
+          aes(x= model_lon,
+              y = model_lat,
+              color = model)) +
+  geom_sf(data = obs,               #points for observed track
+          aes(fill = "black",
+              size = 7)) +
   
+  coord_sf(xlim = c(-90, -74), ylim = c(15, 33)) + #Limit lat/lon boundaries 
+  
+  labs(                                            #Labels
+    x = "Longitude",
+    y = "Latitude",
+    title = t
+  ) 
+  
+mapview(USA_States)
+mapview(obs)
 
-## Some step -------------------------------------------------------------------
+  #theme(legend.position = "none")                  #Remove legend (its HUGE)
+
+#p
 
 
+#Create plots of error
+
+e1 <- ggplot(data = model_bt,                       #vmax
+             aes(x = valid_time)) +
+    geom_smooth(aes(y=vmax_err, color = model), se = FALSE) +
+    geom_smooth(aes, y = model_bt$obs_vmax, 
+                     fill = "black", 
+                     linetype = "dashed",
+                     size = 10
+                     ) +
+    #geom_vline(xintercept = ())
+    theme(legend.position = "none") +
+    labs(
+      x = "Date",
+      y = "Error in Vmax (kts)"
+  )
+
+e1
+
+e1 <- ggplot(data = model_bt, 
+             aes(x = valid_time)) +
+  geom_smooth(aes(y=vmax_err, color = model, se = FALSE, alpha = 0.1)) +
+  theme(legend.position = "none") +
+  labs(
+    x = "Date",
+    y = "Error in Vmax (kts)"
+  )
+
+
+
+e3 <- ggplot(data = model_bt, 
+             aes(x = valid_time)) +
+  geom_smooth(aes(y=press_err, color = model, alpha = 0.1), , se = FALSE) +
+  theme(legend.position = "none") +
+  labs(
+    x = "Date",
+    y = "Error in Vmax (kts)"
+  )
+
+#e3
 
 
 
@@ -60,19 +141,8 @@ p
 
 # ANALYSIS #####################################################################
 
-## Almost last step ------------------------------------------------------------
-
 
 # EXPORT #######################################################################
 
-## The final step --------------------------------------------------------------
-# VISUALIZE ####################################################################
-coast <- rnaturalearth::ne_coastline(scale = 50)
-USA <- rnaturalearth::ne_states(geounit = "United States of America")
 
-mapviewOptions(basemaps = c("Esri.WorldShadedRelief", "Esri.WorldImagery", "CartoDB.Positron"))
-
-ggplot(USA) +
-  ggplot(best_track, xcol = "Lon", ycol = 'Lat', crs = 4326, legend = TRUE, color = 'red') +
-  ggplot(day_one_hafs, xcol = "long", ycol = 'lat', crs = 4326, legend = TRUE, color = "yellow") 
-ggplot(day_one_ships, xcol = "long", ycol = 'lat', crs = 4326, legend = TRUE, color = "lightgreen")
+print("All Done!")

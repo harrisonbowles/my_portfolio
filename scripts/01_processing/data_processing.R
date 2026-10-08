@@ -41,17 +41,19 @@ best_track <- best_track |>                                     #BEST TRACK
   
   #Create our datetime object
   rename("time" = "Model.Init.Time") |>         #Rename time
-  mutate(valid_time = paste0(Year.Month.Day, str_sub(time, 1, 2))) |> 
+  rename("obs_vmax" = "Max.Wind..kts.") |> 
+  rename("obs_min_pres" = "Min.Cen.Pressure") |> 
+  mutate(obs_min_pres = as.numeric(obs_min_pres)) |> 
+  mutate(valid_time = paste0(Year.Month.Day, str_sub(time, 1, 4))) |> 
   mutate(valid_time = parse_date_time(as.character(valid_time),
-                                      orders = "YmdH",
+                                      orders = "YmdHM",
                                       tz = "UTC")) |> 
   
-  #Convert Lat/Lons to non-char
+  #Convert Lat/Lons to non-char, and make a geometry object out of them
   mutate(
-    Lat = parse_number(Lat) * if_else(str_detect(Lat, "S"), -1, 1), 
-    Lon = parse_number(Lon) * if_else(str_detect(Lon, "W"), -1, 1)
-  ) |> 
-  st_as_sf(coords = c("Lon", "Lat"))
+    obs_lat = parse_number(Lat) * if_else(str_detect(Lat, "S"), -1, 1), 
+    obs_lon = parse_number(Lon) * if_else(str_detect(Lon, "W"), -1, 1)
+  )
 
 
 
@@ -61,10 +63,12 @@ model_data <- model_data |>                                     #MODEL DATA
   rename("model" = "CARQ") |>
   rename("year_month_day_hour" = "X2022092012") |> 
   rename("forecast_hour" = "X.24") |>
-  rename("lat" = "X99N") |> 
-  rename("long" = "X466W") |>
-  rename("vmax" = "X20") |> 
-  rename("min_pressure" = "X0") |> 
+  mutate(forecast_hour = as.numeric(forecast_hour)) |> 
+  rename("model_lat" = "X99N") |> 
+  rename("model_lon" = "X466W") |>
+  rename("model_vmax" = "X20") |> 
+  rename("model_min_pressure" = "X0") |> 
+  mutate(model_min_pressure = as.numeric(model_min_pressure)) |> 
   rename("storm_type" = "DB") |> 
   
   #Collapse first two columns together
@@ -73,10 +77,10 @@ model_data <- model_data |>                                     #MODEL DATA
   #Remove unused rows
   filter_out(str_detect(storm_id, "0|NEQ45|NEQ75")) |> 
   
-  #Convert lat/lons to non-char
+  #Convert lat/lons to non-char, and make a geometry object out of them
   mutate(
-        lat = parse_number(lat) / 10 * if_else(str_detect(lat, "S"), -1, 1), 
-        long = parse_number(long) / 10 * if_else(str_detect(long, "W"), -1, 1)     
+        model_lat = parse_number(model_lat) / 10 * if_else(str_detect(model_lat, "S"), -1, 1), 
+        model_lon = parse_number(model_lon) / 10 * if_else(str_detect(model_lon, "W"), -1, 1)     
          ) |> 
   
   #Remove unnecessary variables
@@ -88,52 +92,30 @@ model_data <- model_data |>                                     #MODEL DATA
   mutate(datetime = parse_date_time(as.character(year_month_day_hour),
                                     orders = "YmdH",
                                     tz = "UTC")) |> 
-  mutate(valid_time = datetime + hours(forecast_hour))
+  mutate(valid_time = datetime + hours(as.numeric(forecast_hour)))
 
 #join the model data to the best track data by date
-#model_bt <- left_join(best_track,
-#                      model_data,
-#                      by = )
-
-
-
-#hafs_a <- model_data |> 
-#  filter(model == " HFA2") |>  #Save all HAFS-A model runs
-#  mutate(
-#    lat = parse_number(lat) / 10 * if_else(str_detect(lat, "S"), -1, 1), 
-#    long = parse_number(long) / 10 * if_else(str_detect(long, "W"), -1, 1)     #Convert lat/lons to non-char
-# )
-#day_one_hafs <- hafs_a |> 
-#  filter(year_month_day_hour == 2022092112) #To save only one HAFS-A run for Ian
-#
-#ships <- model_data |> 
-#  filter(model == " SHIP") |> #Save all SHIPS model runs
-#  mutate(
-#    lat = parse_number(lat) / 10 * if_else(str_detect(lat, "S"), -1, 1), 
-#    long = parse_number(long) / 10 * if_else(str_detect(long, "W"), -1, 1)     #Convert lat/lons to non-char
-#  )
-#day_one_ships <- ships |> 
-#  filter(year_month_day_hour == 2022092112) #To save only one SHIPS run for Ian
+model_bt <- left_join(best_track,
+                      model_data,
+                      by = join_by(valid_time),
+                      relationship = "one-to-many") |> 
+  select(-(starts_with("X.x") |
+           starts_with("X.y") |
+           starts_with("X.2") |
+           starts_with("X.1")
+           )) |> 
+  st_as_sf(coords = c("obs_lon", "obs_lat"), 
+           crs = 4326,
+           remove = FALSE) |> 
+  mutate(lat_error = abs(obs_lat - model_lat)) |> 
+  mutate(lon_error = abs(obs_lon - model_lon)) |> 
+  mutate(vmax_err = abs(model_vmax - obs_vmax)) |> 
+  mutate(pres_err = abs(model_min_pressure - obs_min_pres))
 
 
 # EXPORT #######################################################################
 
+#Export the data to be visualized
+write_rds(model_bt,
+          file = "data/processed/model_bt.rds")
 
-write_rds(best_track,                                      #Export the data to be visualized
-          file = "data/processed/best_track.rds")          #Best Track
-
-#write_sf(best_track,                                  
-#          dsn = "data/processed/best_track.shp")
-#
-#write_sf(model_data,
-#         dsn = "data/processed/model_data.shp")
-
-#write_rds(hafs_a,
-#          file = "data/processed/hafs_a.rds")         #HAFS-A
-#write_rds(day_one_hafs,
-#          file = "data/processed/hafs_a_1.rds")
-#
-#write_rds(ships,
-#          file = "data/processed/ships.rds")          #SHIPS
-#write_rds(day_one_ships,
-#          file = "data/processed/ships_1.rds")
