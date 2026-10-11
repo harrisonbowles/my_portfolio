@@ -18,6 +18,10 @@
 ################################################################################  
 
 # SET UP #######################################################################
+#Install rnaturalearthhires
+#I know installing packages in the script isn't preferred but this is needed to
+#reproduce my code and causes issues otherwise
+remotes::install_github("ropensci/rnaturalearthhires")
 
 ## Load packages ---------------------------------------------------------------
 library(tidyverse)

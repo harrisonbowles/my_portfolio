@@ -33,6 +33,6 @@ scripts/ : This will house all R scripts used for analysis
 
   01_processing/: This will house scripts to clean and tidy datasets for analysis
   
-  03_analysis/: This will house scripts to visualize and analyze processed data
+  03_content/: This will house scripts to visualize and analyze processed data
   
 results/ : This will house all output figures and tables
