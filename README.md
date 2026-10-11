@@ -36,3 +36,8 @@ scripts/ : This will house all R scripts used for analysis
   03_content/: This will house scripts to visualize and analyze processed data
   
 results/ : This will house all output figures and tables
+
+
+There are 3 plots (the individual error plots) that I am creating but have commented
+out. I do no want these to be graded. They are only for my personal use. The final
+repository should not generate these plots.
