@@ -39,10 +39,20 @@ model <- read.csv(file = "data/raw/Ida/ida_model.dat",
                        fill = T) |> 
   as_tibble()
 
-ref <- read.csv(file = "data/raw/Ida/model_ref.csv") |> 
+ref <- read.csv(file = "data/raw/Ida/model_ref.csv",
+                strip.white = T) |> 
   as_tibble()
   
 # PROCESSING ###################################################################
+distance_nmi <- function(lat1, lon1, lat2, lon2) {
+  r <- 3440.065                                  # Earth radius, nautical miles
+  p <- pi / 180
+  a <- sin((lat2 - lat1) * p / 2)^2 +
+    cos(lat1 * p) * cos(lat2 * p) * sin((lon2 - lon1) * p / 2)^2
+  2 * r * asin(sqrt(a))
+}
+
+
 model <- model |> 
   #Make number chars into numeric
   mutate(f_hour = as.numeric(f_hour)) |> 
@@ -68,41 +78,37 @@ model <- model |>
   select(-yearmonthdayhour) |> 
   #Move to the front
   relocate(valid_time) |> 
-  filter(model_min_pressure != 0) |> 
-  filter(model_vmax != 0)
+  filter(f_hour >= 0, model != "CARQ") |> 
+  mutate(across(c(model_vmax, model_min_pressure), ~ na_if(.x, 0))) |> 
+  distinct(model, datetime, f_hour, .keep_all = TRUE)
 
 model_join <- left_join(model,
                         ref,
                         by = join_by(model),
                         relationship = "many-to-one")
 
-
-
-model_bt <- left_join(bt,
-                      model_join,
-                      by = join_by(valid_time),
+model_bt <- left_join(bt, model_join, by = join_by(valid_time),
                       relationship = "one-to-many") |> 
-  mutate(lat_error = abs(obs_lat - model_lat)) |>                  #Calculate error for relevant values
-  mutate(lon_error = abs(obs_lon - model_lon)) |> 
-  mutate(xy_err = sqrt((lat_error)^2 + (lon_error)^2 )) |> 
-  mutate(vmax_err = abs(model_vmax - vmax_kt)) |> 
-  mutate(pres_err = abs(model_min_pressure - mslp_mb))
+  filter(!is.na(model)) |> 
+  mutate(track_err_nmi = distance_nmi(obs_lat, obs_lon, model_lat, model_lon),
+         vmax_bias = model_vmax - vmax_kt,
+         vmax_err  = abs(vmax_bias),
+         pres_bias = model_min_pressure - mslp_mb,
+         pres_err  = abs(pres_bias))
 
 by_fhour <- model_bt |> 
-  group_by(f_hour, model, valid_time, init_time) |> 
-  summarize(xy_err = mean(xy_err),
-            vmax_err = mean(vmax_err),
-            pres_err = mean(pres_err)) 
-by_fhour <- left_join(by_fhour,
-                      ref,
-                      by = join_by(model),
-                      relationship = "many-to-one")
-
-# VISUALIZE ####################################################################
-
-## Another step ----------------------------------------------------------------
-
+  group_by(family, category, model, f_hour, datetime, valid_time) |> 
+  summarize(n_cases   = n(),
+            track_err = mean(track_err_nmi, na.rm = TRUE),
+            vmax_mae  = mean(vmax_err, na.rm = TRUE),
+            vmax_mbe  = mean(vmax_bias, na.rm = TRUE),
+            pres_mae  = mean(pres_err, na.rm = TRUE),
+            .groups = "drop")
 
 # EXPORT #######################################################################
+#Begin extracting by relevant characteristics
+write_rds(model_bt,
+          file = "data/processed/model_bt_ida.rds")
 
-## The final step --------------------------------------------------------------
+write_rds(by_fhour,
+          file = "data/processed/by_fhour_ida.rds")
