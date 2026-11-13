@@ -1,0 +1,537 @@
+model,desc,family,category,member,RET
+CARQ, Combined ARQ Position,,,F,F
+WRNG, Warning,,,F,F
+OFCL, NHC official forecast,NOAA,official,F,F
+OFCI, NHC official forecast (Interpolated 06 hours),NOAA,official,F,F
+OFC2, NHC official forecast (Interpolated 12 hours),NOAA,official,F,F
+OFCP, NHC provisional forecast,NOAA,official,F,F
+OFPI, NHC provisional forecast (Interpolated 06 hours),NOAA,official,F,F
+OFP2, NHC provisional forecast (Interpolated 12 hours),NOAA,official,F,F
+OFCO, Original NHC official forecast (retained when special,NOAA,official,F,F
+OCD5, Combination of CLP5 and Decay-SHIFOR run on operation,NOAA,official,F,F
+BCD5, Combination of CLP5 and Decay-SHIFOR run on operation,NOAA,official,F,F
+OHPC, WPC official forecast,NOAA,official,F,F
+OOPC, OPC official forecast,NOAA,official,F,F
+JTWC, JTWC official forecast,JTWC,official,F,F
+JTWI, JTWC official forecast (Interpolated 06 hours),JTWC,official,F,F
+XTRP, Extrapolation using past 12-hr motion,OTHER,other,F,F
+CLIP, CLImatology-PERsistence model 3-day,CLIPER,official,F,F
+CLP5, CLImatology-PERsistence model 5-day,CLIPER,official,F,F
+TCLP, Trajectory CLIPER model 7-day,CLIPER,official,F,F
+BAMD," Beta and Advection model,  deep (NHC)",BAM,,F,T
+BAMM," Beta and Advection model,  medium (NHC)",BAM,,F,T
+BAMS," Beta and Advection model,  shallow (NHC)",BAM,,F,T
+TABD," Trajectory and Beta Model from GFS,  deep (NHC)",GFS,official,F,F
+TABM," Trajectory and Beta Model from GFS,  medium (NHC)",GFS,official,F,F
+TABS," Trajectory and Beta Model from GFS,  shallow (NHC)",GFS,official,F,F
+TBDE," Trajectory and Beta Model from ECMWF,  deep (NHC)",GFS,official,F,F
+TBME," Trajectory and Beta Model from ECMWF,  medium (NHC)",GFS,official,F,F
+TBSE," Trajectory and Beta Model from ECMWF,  shallow (NHC)",GFS,official,F,F
+LBAR, LBAR,,,F,T
+FSSE, FSU Superensemble,FSU,ensemble,T,F
+HWRF, HWRF model,HWRF,hurricane,F,F
+HWFI, HWRF model (Interpolated 06 hrs) - variable offset in,HWRF,hurricane,F,F
+HWF2, HWRF model (Interpolated 12 hrs) - variable offset in,HWRF,hurricane,F,F
+HHFI, HWRF model (Interpolated 06 hrs) - variable offset ra,HWRF,hurricane,F,F
+HHF2, HWRF model (Interpolated 12 hrs) - variable offset ra,HWRF,hurricane,F,F
+HWFE, HWRF w/ ECMWF fields model,HWRF,hurricane,F,F
+HWEI, HWRF w/ ECMWF fields model (Interpolated 06 hours),HWRF,hurricane,F,F
+HWE2, HWRF w/ ECMWF fields model (Interpolated 12 hours),HWRF,hurricane,F,F
+HW3F, HWRF model [2013 version],HWRF,hurricane,F,F
+HW3I, HWRF model [2013 version] (Interpolated 06 hours),HWRF,hurricane,F,F
+HW32, HWRF model [2013 version] (Interpolated 12 hours),HWRF,hurricane,F,F
+HMON, HMON model,HMON,hurricane,F,F
+HMNI, HMON model (Interpolated 06 hours) - variable offset ,HMON,hurricane,F,F
+HMN2, HMON model (Interpolated 12 hours) - variable offset ,HMON,hurricane,F,F
+HHNI, HMON model (Interpolated 06 hours) - variable offset ,HMON,hurricane,F,F
+HHN2, HMON model (Interpolated 12 hours) - variable offset ,HMON,hurricane,F,F
+CHIP, Coupled Hurricane Intensity Prediction System,CHIP,hurricane,F,F
+CHPI, Coupled Hurricane Intensity Prediction System (Interp,CHIP,hurricane,F,F
+CHP2, Coupled Hurricane Intensity Prediction System (Interp,CHIP,hurricane,F,F
+HFSA,Hurricane Analysis and Forecast System - Configuration A,HAFS-A,hurricane,F,F
+HFSB,Hurricane Analysis and Forecast System - Configuration B,HAFS-B,hurricane,F,F
+HAFA, HAFS-A - Stand Alone Regional ,HAFS-A,hurricane,F,F
+HFAI, HAFS-A (Interpolated 06 hours) - variable offset inte,HAFS-A,hurricane,F,F
+HFA2, HAFS-A (Interpolated 12 hours) - variable offset inte,HAFS-A,hurricane,F,F
+HAFB, HAFS-B - Global with Static Nest ,HAFS-B,hurricane,F,F
+HFBI, HAFS-B (Interpolated 06 hours) - variable offset inte,HAFS-B,hurricane,F,F
+HFB2, HAFS-B (Interpolated 12 hours) - variable offset inte,HAFS-B,hurricane,F,F
+HAFJ, HAFS-SAR with ESG Grid ,HAFS-SAR,hurricane,F,F
+HFJI, HAFS-SAR (Interpolated 06 hours) - variable offset in,HAFS-SAR,hurricane,F,F
+HFJ2, HAFS-SAR (Interpolated 12 hours) - variable offset in,HAFS-SAR,hurricane,F,F
+HB20, Basin-Scale HWRF,HWRF,hurricane,F,F
+HB0I, Basin-Scale HWRF (Interpolated 06 hours) - variable o,HWRF,hurricane,F,F
+HB02, Basin-Scale HWRF (Interpolated 12 hours) - variable o,HWRF,hurricane,F,F
+GFDL, GFDL model,GFDL,hurricane,F,T
+GFDI, GFDL model (Interpolated 06 hours),GFDL,hurricane,F,T
+GFD2, GFDL model (Interpolated 12 hours),GFDL,hurricane,F,T
+GFD5, Parallel version of GFDL,GFDL,hurricane,F,T
+GF5I, Parallel version of GFDL (Interpolated 06 hours),GFDL,hurricane,F,T
+GF52, Parallel version of GFDL (Interpolated 12 hours),GFDL,hurricane,F,T
+GFDE, GFDL w/ ECMWF fields model,GFDL,hurricane,F,T
+GFEI, GFDL w/ ECMWF fields model (Interpolated 06 hours),GFDL,hurricane,F,T
+GFE2, GFDL w/ ECMWF fields model (Interpolated 12 hours),GFDL,hurricane,F,T
+GHMI, GFDL 06-h interpolated model using variable intensity,GFDL,hurricane,F,T
+GHM2, GFDL 12-h interpolated model using variable intensity,GFDL,hurricane,F,T
+GFDT, GFDL using [NCEP tracker],GFDL,hurricane,F,T
+GFTI, GFDL using [NCEP tracker] (Interpolated 06 hours),GFDL,hurricane,F,T
+GFT2, GFDL using [NCEP tracker] (Interpolated 12 hours),GFDL,hurricane,F,T
+GFDN, Navy GFDL model,GFDL,hurricane,F,F
+GFNI, Navy GFDL model (Interpolated 06 hours),GFDL,hurricane,F,F
+GFN2, Navy GFDL model (Interpolated 12 hours),GFDL,hurricane,F,F
+NAM , NAM model,NAM,cam,F,F
+NAMI, NAM model (Interpolated 06 hours),NAM,cam,F,F
+NAM2, NAM model (Interpolated 12 hours),NAM,cam,F,F
+COCE, COAMPS Carib/E Pacific grid,COAMPS,coupled,F,F
+COEI, COAMPS Carib/E Pacific grid (Interpolated 06 hours),COAMPS,coupled,F,F
+COE2, COAMPS Carib/E Pacific grid (Interpolated 12 hours),COAMPS,coupled,F,F
+COAL, COAMPS Atlantic grid,COAMPS,coupled,F,F
+COAI, COAMPS Atlantic grid (Interpolated 06 hours),COAMPS,coupled,F,F
+COA2, COAMPS Atlantic grid (Interpolated 12 hours),COAMPS,coupled,F,F
+GFSL, Legacy GFS Model,GFS,global,F,F
+GFLI, Legacy GFS Model (Interpolated 06 hours),GFS,global,F,F
+GFL2, Legacy GFS Model (Interpolated 12 hours),GFS,global,F,F
+AVNO, GFS Model,GFS,global,F,F
+AVNI, GFS Model (Interpolated 06 hours),GFS,global,F,F
+AVN2, GFS Model (Interpolated 12 hours),GFS,global,F,F
+AVXO, GFS Model 10-day tracker,GFS,global,F,F
+AVXI, GFS Model 10-day tracker (Interpolated 06 hours),GFS,global,F,F
+AVX2, GFS Model 10-day tracker (Interpolated 12 hours),GFS,global,F,F
+AHNI, GFS Model (Interpolated 06 hrs) variable offset - int,GFS,global,F,F
+AHN2, GFS Model (Interpolated 12 hrs) variable offset - int,GFS,global,F,F
+AC00, GFS Ensemble control member,GFS,ensemble,T,F
+AP01, GFS Ensemble +01 member,GFS,ensemble,T,F
+AP02, GFS Ensemble +02 member,GFS,ensemble,T,F
+AP03, GFS Ensemble +03 member,GFS,ensemble,T,F
+AP04, GFS Ensemble +04 member,GFS,ensemble,T,F
+AP05, GFS Ensemble +05 member,GFS,ensemble,T,F
+AP06, GFS Ensemble +06 member,GFS,ensemble,T,F
+AP07, GFS Ensemble +07 member,GFS,ensemble,T,F
+AP08, GFS Ensemble +08 member,GFS,ensemble,T,F
+AP09, GFS Ensemble +09 member,GFS,ensemble,T,F
+AP10, GFS Ensemble +10 member,GFS,ensemble,T,F
+AP11, GFS Ensemble +11 member,GFS,ensemble,T,F
+AP12, GFS Ensemble +12 member,GFS,ensemble,T,F
+AP13, GFS Ensemble +13 member,GFS,ensemble,T,F
+AP14, GFS Ensemble +14 member,GFS,ensemble,T,F
+AP15, GFS Ensemble +15 member,GFS,ensemble,T,F
+AP16, GFS Ensemble +16 member,GFS,ensemble,T,F
+AP17, GFS Ensemble +17 member,GFS,ensemble,T,F
+AP18, GFS Ensemble +18 member,GFS,ensemble,T,F
+AP19, GFS Ensemble +19 member,GFS,ensemble,T,F
+AP20, GFS Ensemble +20 member,GFS,ensemble,T,F
+AP21, GFS Ensemble +21 member,GFS,ensemble,T,F
+AP22, GFS Ensemble +22 member,GFS,ensemble,T,F
+AP23, GFS Ensemble +23 member,GFS,ensemble,T,F
+AP24, GFS Ensemble +24 member,GFS,ensemble,T,F
+AP25, GFS Ensemble +25 member,GFS,ensemble,T,F
+AP26, GFS Ensemble +26 member,GFS,ensemble,T,F
+AP27, GFS Ensemble +27 member,GFS,ensemble,T,F
+AP28, GFS Ensemble +28 member,GFS,ensemble,T,F
+AP29, GFS Ensemble +29 member,GFS,ensemble,T,F
+AP30, GFS Ensemble +30 member,GFS,ensemble,T,F
+AEMN, GFS Ensemble Mean,GFS,ensemble,T,F
+AEMI, GFS Ensemble Mean (Interpolated 06 hours),GFS,ensemble,T,F
+AEM2, GFS Ensemble Mean (Interpolated 12 hours),GFS,ensemble,T,F
+AMMN, GFS New Ensemble Mean,GFS,ensemble,T,F
+PRFV, Experimental NCEP FV3 Global Model (2018),FV3,global,F,F
+PRVI, Experimental NCEP FV3 Global Model (Interpolated 06 h,FV3,global,F,F
+PRV2, Experimental NCEP FV3 Global Model (Interpolated 12 h,FV3,global,F,F
+UKM , UKMET model (Developmental),UKMET,global,F,F
+UKMI, UKMET model (Interpolated 06 hours),UKMET,global,F,F
+UKM2, UKMET model (Interpolated 12 hours),UKMET,global,F,F
+EGRR, UKMET model GTS (Official),UKMET,global,F,F
+EGRI, UKMET model GTS (Official - Interpolated 06 hours),UKMET,global,F,F
+EGR2, UKMET model GTS (Official - Interpolated 12 hours),UKMET,global,F,F
+KEGR, UKMET model GTS (2014 test),UKMET,global,F,T
+KEGI, UKMET model GTS (2014 test - Interpolated 06 hours),UKMET,global,F,T
+KEG2, UKMET model GTS (2014 test - Interpolated 12 hours),UKMET,global,F,T
+UKX , UKMET [GFS tracker],UKMET,global,F,F
+UKXI, UKMET [GFS tracker] (Interpolated 06 hours),UKMET,global,F,F
+UKX2, UKMET [GFS tracker] (Interpolated 12 hours),UKMET,global,F,F
+NGPS, NOGAPS model,NOGAPS,NA,F,T
+NGPI, NOGAPS model (Interpolated 06 hours),NOGAPS,NA,F,T
+NGP2, NOGAPS model (Interpolated 12 hours),NOGAPS,NA,F,T
+NVGM, NAVGEM model,NAVGEM,global,F,F
+NVGI, NAVGEM model (Interpolated 06 hours),NAVGEM,global,F,F
+NVG2, NAVGEM model (Interpolated 12 hours),NAVGEM,global,F,F
+NGX , NAVGEM/NOGAPS [GFS tracker],NAV/NO,global,F,F
+NGXI, NAVGEM/NOGAPS [GFS tracker] (Interpolated 06 hours),NAV/NO,global,F,F
+NGX2, NAVGEM/NOGAPS [GFS tracker] (Interpolated 12 hours),NAV/NO,global,F,F
+CMC , Canadian model,Canadian,global,F,F
+CMCI, Canadian model (Interpolated 06 hours),Canadian,global,F,F
+CMC2, Canadian Model (Interpolated 12 hours),Canadian,global,F,F
+CEMN, Canadian model Ensemble Mean,Canadian,ensemble,T,F
+CEMI, Canadian model Ensemble Mean (Interpolated 06 hours),Canadian,ensemble,T,F
+CEM2, Canadian model Ensemble Mean (Interpolated 12 hours),Canadian,ensemble,T,F
+CC00, Canadian model Ensemble control,Canadian,ensemble,T,F
+CP01, Canadian model Ensemble +01 member,Canadian,ensemble,T,F
+CP02, Canadian model Ensemble +02 member,Canadian,ensemble,T,F
+CP03, Canadian model Ensemble +03 member,Canadian,ensemble,T,F
+CP04, Canadian model Ensemble +04 member,Canadian,ensemble,T,F
+CP05, Canadian model Ensemble +05 member,Canadian,ensemble,T,F
+CP06, Canadian model Ensemble +06 member,Canadian,ensemble,T,F
+CP07, Canadian model Ensemble +07 member,Canadian,ensemble,T,F
+CP08, Canadian model Ensemble +08 member,Canadian,ensemble,T,F
+CP09, Canadian model Ensemble +09 member,Canadian,ensemble,T,F
+CP10, Canadian model Ensemble +10 member,Canadian,ensemble,T,F
+CP11, Canadian model Ensemble +11 member,Canadian,ensemble,T,F
+CP12, Canadian model Ensemble +12 member,Canadian,ensemble,T,F
+CP13, Canadian model Ensemble +13 member,Canadian,ensemble,T,F
+CP14, Canadian model Ensemble +14 member,Canadian,ensemble,T,F
+CP15, Canadian model Ensemble +15 member,Canadian,ensemble,T,F
+CP16, Canadian model Ensemble +16 member,Canadian,ensemble,T,F
+CP17, Canadian model Ensemble +17 member,Canadian,ensemble,T,F
+CP18, Canadian model Ensemble +18 member,Canadian,ensemble,T,F
+CP19, Canadian model Ensemble +19 member,Canadian,ensemble,T,F
+CP20, Canadian model Ensemble +20 member,Canadian,ensemble,T,F
+ECM , ECMWF model,ECMWF,global,F,F
+ECMI, ECMWF model (Interpolated 06 hours),ECMWF,global,F,F
+ECM2, ECMWF model (Interpolated 12 hours),ECMWF,global,F,F
+EMX , ECMWF model [NCEP tracker],ECMWF,global,F,F
+EMXI, ECMWF model [NCEP tracker] (Interpolated 06 hrs),ECMWF,global,F,F
+EMX2, ECMWF model [NCEP tracker] (Interpolated 12 hrs),ECMWF,global,F,F
+EMH , ECMWF model [HCCA tracker],ECMWF,global,F,F
+EMHI, ECMWF model [HCCA tracker] (Interpolated 06 hrs),ECMWF,global,F,F
+EMH2, ECMWF model [HCCA tracker] (Interpolated 12 hrs),ECMWF,global,F,F
+EHHI, ECMWF model [HCCA tracker] (Interpolated 06 hrs) - va,ECMWF,global,F,F
+EHH2, ECMWF model [HCCA tracker] (Interpolated 12 hrs) - va,ECMWF,global,F,F
+EEMN, ECMWF model Ensemble Mean [NCEP tracker],ECMWF,ensemble,T,F
+EMNI, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,T,F
+EMN2, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,T,F
+EMN3, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,T,F
+EMN4, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,T,F
+EC00, ECMWF model Ensemble control member [NCEP tracker],ECMWF,ensemble,T,F
+EN01, ECMWF model Ensemble +01 member [NCEP tracker],ECMWF,ensemble,T,F
+EN02, ECMWF model Ensemble +02 member [NCEP tracker],ECMWF,ensemble,T,F
+EN03, ECMWF model Ensemble +03 member [NCEP tracker],ECMWF,ensemble,T,F
+EN04, ECMWF model Ensemble +04 member [NCEP tracker],ECMWF,ensemble,T,F
+EN05, ECMWF model Ensemble +05 member [NCEP tracker],ECMWF,ensemble,T,F
+EN06, ECMWF model Ensemble +06 member [NCEP tracker],ECMWF,ensemble,T,F
+EN07, ECMWF model Ensemble +07 member [NCEP tracker],ECMWF,ensemble,T,F
+EN08, ECMWF model Ensemble +08 member [NCEP tracker],ECMWF,ensemble,T,F
+EN09, ECMWF model Ensemble +09 member [NCEP tracker],ECMWF,ensemble,T,F
+EN10, ECMWF model Ensemble +10 member [NCEP tracker],ECMWF,ensemble,T,F
+EN11, ECMWF model Ensemble +11 member [NCEP tracker],ECMWF,ensemble,T,F
+EN12, ECMWF model Ensemble +12 member [NCEP tracker],ECMWF,ensemble,T,F
+EN13, ECMWF model Ensemble +13 member [NCEP tracker],ECMWF,ensemble,T,F
+EN14, ECMWF model Ensemble +14 member [NCEP tracker],ECMWF,ensemble,T,F
+EN15, ECMWF model Ensemble +15 member [NCEP tracker],ECMWF,ensemble,T,F
+EN16, ECMWF model Ensemble +16 member [NCEP tracker],ECMWF,ensemble,T,F
+EN17, ECMWF model Ensemble +17 member [NCEP tracker],ECMWF,ensemble,T,F
+EN18, ECMWF model Ensemble +18 member [NCEP tracker],ECMWF,ensemble,T,F
+EN19, ECMWF model Ensemble +19 member [NCEP tracker],ECMWF,ensemble,T,F
+EN20, ECMWF model Ensemble +20 member [NCEP tracker],ECMWF,ensemble,T,F
+EN21, ECMWF model Ensemble +21 member [NCEP tracker],ECMWF,ensemble,T,F
+EN22, ECMWF model Ensemble +22 member [NCEP tracker],ECMWF,ensemble,T,F
+EN23, ECMWF model Ensemble +23 member [NCEP tracker],ECMWF,ensemble,T,F
+EN24, ECMWF model Ensemble +24 member [NCEP tracker],ECMWF,ensemble,T,F
+EN25, ECMWF model Ensemble +25 member [NCEP tracker],ECMWF,ensemble,T,F
+EP01, ECMWF model Ensemble +26 member [NCEP tracker],ECMWF,ensemble,T,F
+EP02, ECMWF model Ensemble +27 member [NCEP tracker],ECMWF,ensemble,T,F
+EP03, ECMWF model Ensemble +28 member [NCEP tracker],ECMWF,ensemble,T,F
+EP04, ECMWF model Ensemble +29 member [NCEP tracker],ECMWF,ensemble,T,F
+EP05, ECMWF model Ensemble +30 member [NCEP tracker],ECMWF,ensemble,T,F
+EP06, ECMWF model Ensemble +31 member [NCEP tracker],ECMWF,ensemble,T,F
+EP07, ECMWF model Ensemble +32 member [NCEP tracker],ECMWF,ensemble,T,F
+EP08, ECMWF model Ensemble +33 member [NCEP tracker],ECMWF,ensemble,T,F
+EP09, ECMWF model Ensemble +34 member [NCEP tracker],ECMWF,ensemble,T,F
+EP10, ECMWF model Ensemble +35 member [NCEP tracker],ECMWF,ensemble,T,F
+EP11, ECMWF model Ensemble +36 member [NCEP tracker],ECMWF,ensemble,T,F
+EP12, ECMWF model Ensemble +37 member [NCEP tracker],ECMWF,ensemble,T,F
+EP13, ECMWF model Ensemble +38 member [NCEP tracker],ECMWF,ensemble,T,F
+EP14, ECMWF model Ensemble +39 member [NCEP tracker],ECMWF,ensemble,T,F
+EP15, ECMWF model Ensemble +40 member [NCEP tracker],ECMWF,ensemble,T,F
+EP16, ECMWF model Ensemble +41 member [NCEP tracker],ECMWF,ensemble,T,F
+EP17, ECMWF model Ensemble +42 member [NCEP tracker],ECMWF,ensemble,T,F
+EP18, ECMWF model Ensemble +43 member [NCEP tracker],ECMWF,ensemble,T,F
+EP19, ECMWF model Ensemble +44 member [NCEP tracker],ECMWF,ensemble,T,F
+EP20, ECMWF model Ensemble +45 member [NCEP tracker],ECMWF,ensemble,T,F
+EP21, ECMWF model Ensemble +46 member [NCEP tracker],ECMWF,ensemble,T,F
+EP22, ECMWF model Ensemble +47 member [NCEP tracker],ECMWF,ensemble,T,F
+EP23, ECMWF model Ensemble +48 member [NCEP tracker],ECMWF,ensemble,T,F
+EP24, ECMWF model Ensemble +49 member [NCEP tracker],ECMWF,ensemble,T,F
+EP25, ECMWF model Ensemble +50 member [NCEP tracker],ECMWF,ensemble,T,F
+ECMO, ECMWF model [GTS tracker],ECMWF,global,F ,F
+ECOI, ECMWF model [GTS tracker] (Interpolated 06 hours),ECMWF,global,F ,F
+ECO2, ECMWF model [GTS tracker] (Interpolated 12 hours),ECMWF,global,F ,F
+ECME, ECMWF model Ensemble Control Member [GTS tracker],ECMWF,ensemble,T,F
+EE01, ECMWF model Ensemble +01 member [GTS tracker],ECMWF,ensemble,T,F
+EE02, ECMWF model Ensemble +02 member [GTS tracker],ECMWF,ensemble,T,F
+EE03, ECMWF model Ensemble +03 member [GTS tracker],ECMWF,ensemble,T,F
+EE04, ECMWF model Ensemble +04 member [GTS tracker],ECMWF,ensemble,T,F
+EE05, ECMWF model Ensemble +05 member [GTS tracker],ECMWF,ensemble,T,F
+EE06, ECMWF model Ensemble +06 member [GTS tracker],ECMWF,ensemble,T,F
+EE07, ECMWF model Ensemble +07 member [GTS tracker],ECMWF,ensemble,T,F
+EE08, ECMWF model Ensemble +08 member [GTS tracker],ECMWF,ensemble,T,F
+EE09, ECMWF model Ensemble +09 member [GTS tracker],ECMWF,ensemble,T,F
+EE10, ECMWF model Ensemble +10 member [GTS tracker],ECMWF,ensemble,T,F
+EE11, ECMWF model Ensemble +11 member [GTS tracker],ECMWF,ensemble,T,F
+EE12, ECMWF model Ensemble +12 member [GTS tracker],ECMWF,ensemble,T,F
+EE13, ECMWF model Ensemble +13 member [GTS tracker],ECMWF,ensemble,T,F
+EE14, ECMWF model Ensemble +14 member [GTS tracker],ECMWF,ensemble,T,F
+EE15, ECMWF model Ensemble +15 member [GTS tracker],ECMWF,ensemble,T,F
+EE16, ECMWF model Ensemble +16 member [GTS tracker],ECMWF,ensemble,T,F
+EE17, ECMWF model Ensemble +17 member [GTS tracker],ECMWF,ensemble,T,F
+EE18, ECMWF model Ensemble +18 member [GTS tracker],ECMWF,ensemble,T,F
+EE19, ECMWF model Ensemble +19 member [GTS tracker],ECMWF,ensemble,T,F
+EE20, ECMWF model Ensemble +20 member [GTS tracker],ECMWF,ensemble,T,F
+EE21, ECMWF model Ensemble +21 member [GTS tracker],ECMWF,ensemble,T,F
+EE22, ECMWF model Ensemble +22 member [GTS tracker],ECMWF,ensemble,T,F
+EE23, ECMWF model Ensemble +23 member [GTS tracker],ECMWF,ensemble,T,F
+EE24, ECMWF model Ensemble +24 member [GTS tracker],ECMWF,ensemble,T,F
+EE25, ECMWF model Ensemble +25 member [GTS tracker],ECMWF,ensemble,T,F
+EE26, ECMWF model Ensemble +26 member [GTS tracker],ECMWF,ensemble,T,F
+EE27, ECMWF model Ensemble +27 member [GTS tracker],ECMWF,ensemble,T,F
+EE28, ECMWF model Ensemble +28 member [GTS tracker],ECMWF,ensemble,T,F
+EE29, ECMWF model Ensemble +29 member [GTS tracker],ECMWF,ensemble,T,F
+EE30, ECMWF model Ensemble +30 member [GTS tracker],ECMWF,ensemble,T,F
+EE31, ECMWF model Ensemble +31 member [GTS tracker],ECMWF,ensemble,T,F
+EE32, ECMWF model Ensemble +32 member [GTS tracker],ECMWF,ensemble,T,F
+EE33, ECMWF model Ensemble +33 member [GTS tracker],ECMWF,ensemble,T,F
+EE34, ECMWF model Ensemble +34 member [GTS tracker],ECMWF,ensemble,T,F
+EE35, ECMWF model Ensemble +35 member [GTS tracker],ECMWF,ensemble,T,F
+EE36, ECMWF model Ensemble +36 member [GTS tracker],ECMWF,ensemble,T,F
+EE37, ECMWF model Ensemble +37 member [GTS tracker],ECMWF,ensemble,T,F
+EE38, ECMWF model Ensemble +38 member [GTS tracker],ECMWF,ensemble,T,F
+EE39, ECMWF model Ensemble +39 member [GTS tracker],ECMWF,ensemble,T,F
+EE40, ECMWF model Ensemble +40 member [GTS tracker],ECMWF,ensemble,T,F
+EE41, ECMWF model Ensemble +41 member [GTS tracker],ECMWF,ensemble,T,F
+EE42, ECMWF model Ensemble +42 member [GTS tracker],ECMWF,ensemble,T,F
+EE43, ECMWF model Ensemble +43 member [GTS tracker],ECMWF,ensemble,T,F
+EE44, ECMWF model Ensemble +44 member [GTS tracker],ECMWF,ensemble,T,F
+EE45, ECMWF model Ensemble +45 member [GTS tracker],ECMWF,ensemble,T,F
+EE46, ECMWF model Ensemble +46 member [GTS tracker],ECMWF,ensemble,T,F
+EE47, ECMWF model Ensemble +47 member [GTS tracker],ECMWF,ensemble,T,F
+EE48, ECMWF model Ensemble +48 member [GTS tracker],ECMWF,ensemble,T,F
+EE49, ECMWF model Ensemble +49 member [GTS tracker],ECMWF,ensemble,T,F
+EE50, ECMWF model Ensemble +50 member [GTS tracker],ECMWF,ensemble,T,F
+JGSM, Japanese Global Spectral Model,JGSM,global,F,F
+JGSI, Japanese Global Spectral Model (Interpolated 06 hours,JGSM,global,F,F
+JGS2, Japanese Global Spectral Model (Interpolated 12 hours,JGSM,global,F,F
+CONU, NHC Multi-Model Consensus (Retired),,,,T
+GUNA, Consensus of all: AVNI/GHMI/EGRI/NGPI,,,,T
+CGUN, Corrected version of GUNA,,,,T
+TCON, Consensus of all: AVNI/EGRI/HWFI (2018 version),,,,T
+TCOE, Consensus of all: AVNI/EGRI/HWFI (2018 version),,,,T
+TCOA, Consensus of all: AVNI/EGRI/HWFI (2018 version),,,,T
+TCCN, Corrected version of TCON,,,,T
+ICON, Consensus of all: DSHP/LGEM/HWFI (2018 version),consensus,consensus,F,F
+TVCN, Consensus of >=2: AVNI/EGRI/HWFI/EMXI/CTCI/EMNI (2019,consensus,consensus,F,F
+TVCE, Consensus of >=2: AVNI/EGRI/HWFI/EMXI/CTCI/HMNI/EMNI ,consensus,consensus,F,F
+TVCA, Consensus of >=2: AVNI/EGRI/HWFI/EMXI/CTCI/EMNI (2019,consensus,consensus,F,F
+TVDG, Consensus of >=2: AVNIx2/EGRIx2/HWFI/EMXIx2/CTCI (201,consensus,consensus,F,F
+TVCC, Corrected version of TVCN,consensus,consensus,F,F
+TVCP, Consensus of >=2: AVNI/EGRI/GHMI/HWFI/CTCI (2016 vers,consensus,consensus,F,T
+GFEX, Consensus of AVNI and EMXI,consensus,consensus,F,F
+TVCX, Consensus of >=2: AVNI/EGRI/HWFI/EMXIx2/CTCI (2018 ve,consensus,consensus,F,F
+TVCY, Consensus of >=2: AVNIx2/EGRI/HWFI/EMXIx2/CTCI (2018 ,consensus,consensus,F,F
+IVCN, Consensus of >=2: DSHP/LGEM/HWFI/CTCI/HMNI (2018 vers,consensus,consensus,F,F
+IVCX, Consensus of >=2: DSHP/LGEM/HWFI/CTCI/HMNI (2018 vers,consensus,consensus,F,F
+IVDR, Consensus of >=2: DSHP/LGEM/HWFIx2/CTCIx2/HMNIx2 (201,consensus,consensus,F,F
+IVCR, Consensus of >=2: DSHP/LGEM/HWFI/RI??+CTCI,consensus,consensus,F,F
+RYOC, Forecaster Created Consensus Guidance (any model comb,consensus,consensus,F,F
+MYOC, Forecaster Created Consensus Guidance (any model comb,consensus,consensus,F,F
+SHFR, SHIFOR intensity model 3-day,SHIPS,hurricane,F,F
+SHF5, SHIFOR intensity model 5-day,SHIPS,hurricane,F,F
+SHIP, SHIPS model,SHIPS,hurricane,F,F
+DSHP, Decay SHIPS model,SHIPS,hurricane,F,F
+LGEM, SHIPS Logistic Growth Equation (LGE) forecast model,SHIPS,hurricane,F,F
+SHPE, SHIPS model (ECMWF),SHIPS,hurricane,F,F
+DSPE, Decay SHIPS model (ECMWF),SHIPS,hurricane,F,F
+LGME, SHIPS Logistic Growth Equation (LGE) forecast model (,SHIPS,hurricane,F,F
+NNIC, Neural Net Intensity Consensus (Bias Corrected) ,consensus,consensus,,F
+NNIB, Neural Net Intensity Consensus (Uncorrected),consensus,consensus,,F
+SHPP, SHIPS model parallel (experimental - do not use),,,,F
+DSPP, Decay SHIPS model parallel (experimental - do not use,,,,F
+RI25, Rapid Intensity Aid 25kts (24 hr RI Prob),RIA,RI,F,F
+RI30, Rapid Intensity Aid 30kts (24 hr RI Prob),RIA,RI,F,F
+RI35, Rapid Intensity Aid 35kts (24 hr RI Prob),RIA,RI,F,F
+RI40, Rapid Intensity Aid 40kts (24 hr RI Prob),RIA,RI,F,F
+MRCL, McAdie Radii CLIPER model,CLIPER,official,F,F
+MRCI, McAdie Radii CLIPER model (Interpolated),CLIPER,official,F,F
+DRCL, DeMaria Radii CLIPER model,CLIPER,official,F,F
+DRCI, DeMaria Radii CLIPER model (Interpolated),CLIPER,official,F,F
+RVCN, Wind Radii Consensus of >=2: AVHI/EMXI/HHFI/ (2017 ve,SUNY,official,F,F
+AHW4, SUNY Advanced Hurricane WRF,SUNY,hurricane,F,F
+AHWI, SUNY Advanced Hurricane WRF (Interpolated 06 hours),SUNY,hurricane,F,F
+AHW2, SUNY Advanced Hurricane WRF (Interpolated 12 hours),SUNY,hurricane,F,F
+COTC, NRL COAMPS-TC model,COAMPS,coupled,F,F
+COTI, NRL COAMPS-TC model (Interpolated 06 hours),COAMPS,coupled,F,F
+COT2, NRL COAMPS-TC model (Interpolated 12 hours),COAMPS,coupled,F,F
+CTCX, NRL COAMPS-TC model experimental version,COAMPS,coupled,F,F
+CTCI, NRL COAMPS-TC expt (Interpolated 06 hours) - variable,COAMPS,coupled,F,F
+CTC2, NRL COAMPS-TC expt (Interpolated 12 hours) - variable,COAMPS,coupled,F,F
+CHCI, NRL COAMPS-TC expt (Interpolated 06 hours) - variable,COAMPS,coupled,F,F
+CHC2, NRL COAMPS-TC expt (Interpolated 12 hours) - variable,COAMPS,coupled,F,F
+A4PS, PSU ARW w/Doppler 2011 version,PSU,cam,F,F
+A4PI, PSU ARW w/Doppler 2011 version (Interpolated 06 hours,PSU,cam,F,F
+A4P2, PSU ARW w/Doppler 2011 version (Interpolated 12 hours,PSU,cam,F,F
+APSU, PSU ARW,PSU,cam,F,F
+APSI, PSU ARW (Interpolated 06 hours),PSU,cam,F,F
+APS2, PSU ARW (Interpolated 12 hours),PSU,cam,F,F
+FIMY, ESRL FIM 2011 version,FIM,global,F,F
+FIMI, ESRL FIM 2011 version (Interpolated 06 hours),FIM,global,F,F
+FIM2, ESRL FIM 2011 version (Interpolated 12 hours),FIM,global,F,F
+FIM9, ESRL FIM,FIM,coupled,F,F
+FM9I, ESRL FIM (Interpolated 06 hours),FIM,coupled,F,F
+FM92, ESRL FIM (Interpolated 12 hours),FIM,coupled,F,F
+UWN8, UW-NMS 8km model,UW-NMS,global,F,F
+UWNI, UW-NMS 8km model (Interpolated 06 hours),UW-NMS,global,F,F
+UWN2, UW-NMS 8km model (Interpolated 12 hours),UW-NMS,global,F,F
+UWN4, UW-NMS 4km model,UW-NMS,global,F,F
+UW4I, UW-NMS 4km model (Interpolated 06 hours),UW-NMS,global,F,F
+UW42, UW-NMS 4km model (Interpolated 12 hours),UW-NMS,global,F,F
+H3GP, NCEP/AOML HWRF 3km model,HWRF,hurricane,F,F
+H3GI, NCEP/AOML HWRF 3km (Interpolated 06 hours),HWRF,hurricane,F,F
+H3G2, NCEP/AOML HWRF 3km (Interpolated 12 hours),HWRF,hurricane,F,F
+SPC3, CSU-CIRA SPICE statistical intensity consensus,consensus,consensus,F,F
+TV15, HFIP track consensus of >=2: AVNI/EGRI/HWFI/EMXI/GPMI,consensus,consensus,F,F
+IV15, HFIP intensity consensus of >=2: DSHP/LGEM/HWFI/GPMI/,consensus,consensus,F,F
+GPMN, GFDL Ensemble Mean,GFDL,ensemble,T,T
+GPMI, GFDL Ensemble Mean (Interpolated 06 hours),GFDL,ensemble,T,T
+GPM2, GFDL Ensemble Mean (Interpolated 12 hours),GFDL,ensemble,T,T
+GP00, GFDL Ensemble +00 Control,GFDL,ensemble,T,T
+G00I, GFDL Ensemble +00 Control (Interpolated 06 hours),GFDL,ensemble,T,T
+G002, GFDL Ensemble +00 Control (Interpolated 12 hours),GFDL,ensemble,T,T
+GP01, GFDL Ensemble +01 member (unbogussed),GFDL,ensemble,T,T
+G01I, GFDL Ensemble +01 member (unbogussed) (Interpolated 0,GFDL,ensemble,T,T
+G012, GFDL Ensemble +01 member (unbogussed) (Interpolated 1,GFDL,ensemble,T,T
+GP02, GFDL Ensemble +02 member,GFDL,ensemble,T,T
+G02I, GFDL Ensemble +02 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G022, GFDL Ensemble +02 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP03, GFDL Ensemble +03 member,GFDL,ensemble,T,T
+G03I, GFDL Ensemble +03 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G032, GFDL Ensemble +03 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP04, GFDL Ensemble +04 member,GFDL,ensemble,T,T
+G04I, GFDL Ensemble +04 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G042, GFDL Ensemble +04 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP05, GFDL Ensemble +05 member,GFDL,ensemble,T,T
+G05I, GFDL Ensemble +05 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G052, GFDL Ensemble +05 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP06, GFDL Ensemble +06 member,GFDL,ensemble,T,T
+G06I, GFDL Ensemble +06 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G062, GFDL Ensemble +06 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP07, GFDL Ensemble +07 member,GFDL,ensemble,T,T
+G07I, GFDL Ensemble +07 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G072, GFDL Ensemble +07 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP08, GFDL Ensemble +08 member,GFDL,ensemble,T,T
+G08I, GFDL Ensemble +08 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G082, GFDL Ensemble +08 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP09, GFDL Ensemble +09 member,GFDL,ensemble,T,T
+G09I, GFDL Ensemble +09 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G092, GFDL Ensemble +09 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP10, GFDL Ensemble +10 member,GFDL,ensemble,T,T
+G10I, GFDL Ensemble +10 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G102, GFDL Ensemble +10 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP11, GFDL Ensemble +11 member,GFDL,ensemble,T,T
+G11I, GFDL Ensemble +11 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G112, GFDL Ensemble +11 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP12, GFDL Ensemble +12 member,GFDL,ensemble,T,T
+G12I, GFDL Ensemble +12 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G122, GFDL Ensemble +12 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP13, GFDL Ensemble +13 member,GFDL,ensemble,T,T
+G13I, GFDL Ensemble +13 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G132, GFDL Ensemble +13 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP14, GFDL Ensemble +14 member,GFDL,ensemble,T,T
+G14I, GFDL Ensemble +14 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G142, GFDL Ensemble +14 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP15, GFDL Ensemble +15 member,GFDL,ensemble,T,T
+G15I, GFDL Ensemble +15 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G152, GFDL Ensemble +15 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP16, GFDL Ensemble +16 member,GFDL,ensemble,T,T
+G16I, GFDL Ensemble +16 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G162, GFDL Ensemble +16 member (Interpolated 12 hours),GFDL,ensemble,T,T
+GP17, GFDL Ensemble +17 member,GFDL,ensemble,T,T
+G17I, GFDL Ensemble +17 member (Interpolated 06 hours),GFDL,ensemble,T,T
+G172, GFDL Ensemble +17 member (Interpolated 12 hours),GFDL,ensemble,T,T
+HWMN, HWRF Ensemble Mean,HWRF,ensemble,T,F
+HWMI, HWRF Ensemble Mean (Interpolated 06 hours),HWRF,ensemble,T,F
+HWM2, HWRF Ensemble Mean (Interpolated 12 hours),HWRF,ensemble,T,F
+IVRI, Consensus of 5: DHSP/LGEM/HHFI/CHTI+RI40 or RI35 or R,consensus,consensus,F,F
+KBMD," Beta and Advection model,  deep (NHC-NCO PARA)",BAM,,,T
+KBMM," Beta and Advection model,  medium (NHC-NCO PARA)",BAM,,,T
+KBMS," Beta and Advection model,  shallow (NHC-NCO PARA)",BAM,,,T
+KXTR, Extrapolation using past 12-hr motion (NHC-NCO PARA),,,,T
+KCLP, CLImatology-PERsistence model 3-day (NHC-NCO PARA),,,,T
+KCL5, CLImatology-PERsistence model 5-day (NHC-NCO PARA),,,,T
+KLBR, LBAR (NHC-NCO PARA),,,,T
+KOCD, Combination of CLP5 and Decay-SHIFOR run on operation,,,,T
+KSFR, SHIFOR intensity model 3-day (NHC-NCO PARA),,,,T
+KSF5, SHIFOR intensity model 5-day (NHC-NCO PARA),,,,T
+KSHP, SHIPS model (NHC-NCO PARA),,,,T
+KDSP, Decay SHIPS model (NHC-NCO PARA),,,,T
+KLGM, SHIPS Logistic Growth Equation (LGE) forecast model (,,,,T
+HCCA, HFIP Corrected Consensus Approach model,consensus,consensus,T,F
+UE00, UKMET MOGREPS-G Ensemble Control Member,UKMET,ensemble,T,F
+UE01, UKMET MOGREPS-G Ensemble +01 member,UKMET,ensemble,T,F
+UE02, UKMET MOGREPS-G Ensemble +02 member,UKMET,ensemble,T,F
+UE03, UKMET MOGREPS-G Ensemble +03 member,UKMET,ensemble,T,F
+UE04, UKMET MOGREPS-G Ensemble +04 member,UKMET,ensemble,T,F
+UE05, UKMET MOGREPS-G Ensemble +05 member,UKMET,ensemble,T,F
+UE06, UKMET MOGREPS-G Ensemble +06 member,UKMET,ensemble,T,F
+UE07, UKMET MOGREPS-G Ensemble +07 member,UKMET,ensemble,T,F
+UE08, UKMET MOGREPS-G Ensemble +08 member,UKMET,ensemble,T,F
+UE09, UKMET MOGREPS-G Ensemble +09 member,UKMET,ensemble,T,F
+UE10, UKMET MOGREPS-G Ensemble +10 member,UKMET,ensemble,T,F
+UE11, UKMET MOGREPS-G Ensemble +11 member,UKMET,ensemble,T,F
+UE12, UKMET MOGREPS-G Ensemble +12 member,UKMET,ensemble,T,F
+UE13, UKMET MOGREPS-G Ensemble +13 member,UKMET,ensemble,T,F
+UE14, UKMET MOGREPS-G Ensemble +14 member,UKMET,ensemble,T,F
+UE15, UKMET MOGREPS-G Ensemble +15 member,UKMET,ensemble,T,F
+UE16, UKMET MOGREPS-G Ensemble +16 member,UKMET,ensemble,T,F
+UE17, UKMET MOGREPS-G Ensemble +17 member,UKMET,ensemble,T,F
+UE18, UKMET MOGREPS-G Ensemble +18 member,UKMET,ensemble,T,F
+UE19, UKMET MOGREPS-G Ensemble +19 member,UKMET,ensemble,T,F
+UE20, UKMET MOGREPS-G Ensemble +20 member,UKMET,ensemble,T,F
+UE21, UKMET MOGREPS-G Ensemble +21 member,UKMET,ensemble,T,F
+UE22, UKMET MOGREPS-G Ensemble +22 member,UKMET,ensemble,T,F
+UE23, UKMET MOGREPS-G Ensemble +23 member,UKMET,ensemble,T,F
+UE24, UKMET MOGREPS-G Ensemble +24 member,UKMET,ensemble,T,F
+UE25, UKMET MOGREPS-G Ensemble +25 member,UKMET,ensemble,T,F
+UE26, UKMET MOGREPS-G Ensemble +26 member,UKMET,ensemble,T,F
+UE27, UKMET MOGREPS-G Ensemble +27 member,UKMET,ensemble,T,F
+UE28, UKMET MOGREPS-G Ensemble +28 member,UKMET,ensemble,T,F
+UE29, UKMET MOGREPS-G Ensemble +29 member,UKMET,ensemble,T,F
+UE30, UKMET MOGREPS-G Ensemble +30 member,UKMET,ensemble,T,F
+UE31, UKMET MOGREPS-G Ensemble +31 member,UKMET,ensemble,T,F
+UE32, UKMET MOGREPS-G Ensemble +32 member,UKMET,ensemble,T,F
+UE33, UKMET MOGREPS-G Ensemble +32 member,UKMET,ensemble,T,F
+UE34, UKMET MOGREPS-G Ensemble +34 member,UKMET,ensemble,T,F
+UE35, UKMET MOGREPS-G Ensemble Previous Control member,UKMET,ensemble,T,F
+UEMN, UKMET MOGREPS-G Ensemble Mean,UKMET,ensemble,T,F
+UEMI, UKMET MOGREPS-G Ensemble Mean (Interpolated 06 hours),UKMET,ensemble,T,F
+UEM2, UKMET MOGREPS-G Ensemble Mean (Interpolated 12 hours),UKMET,ensemble,T,F
+GDMN,Google DeepMind's FNV3 Ensemble Mean,GDM,statistical,T,F
+GDMI,Google DeepMind's FNV3 Ensemble Mean,GDM,statistical,T,F
+GDM2,Google DeepMind's FNV3 Ensemble Mean,GDM,statistical,T,F
+,  model     n,,,,
+,   <chr> <int>,,,,
+, 2 GFSO   3601,,,,
+, 3 AVNX   3382,,,,
+, 6 DSWR   2223,,,,
+, 7 EGMN   2202,,,,
+, 8 RVCX   2168,,,,
+, 9 EMX    1725,,,,
+,10 H360   1716,,,,
+,12 CMC    1424,,,,
+,13 GENC   1224,,,,
+,14 EGMI   1089,,,,
+,15 GRPH   1000,,,,
+,16 NEMN    992,,,,
+,17 NGX     877,,,,
+,18 UKX     796,,,,
+,19 IVCP    757,,,,
+,20 IVCO    754,,,,
+,21 TVCB    736,,,,
+,22 TVCF    736,,,,
+,23 TVCG    730,,,,
+,24 GEN2    508,,,,
+,25 GRPI    489,,,,
+,26 EAIO    462,,,,
+,28 H36I    443,,,,
+,29 H362    252,,,,
+,30 EAI2    207,,,,
+,31 GRP2    169,,,,
+,32 GENI    153,,,,
+,33 EAII    116,,,,
