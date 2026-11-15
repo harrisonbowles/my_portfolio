@@ -25,7 +25,8 @@ bt <- read_rds("data/raw/Ida/ida_bt.rds") |>
   select(-(n_expected)) |> 
   rename(valid_time = time_utc) |> 
   rename(obs_lon = lon,
-         obs_lat = lat)
+         obs_lat = lat) |> 
+  write_rds("data/processed/obs_data_ida.rds")
 
 model <- read.csv(file = "data/raw/Ida/ida_model.dat",
                        header = FALSE,
