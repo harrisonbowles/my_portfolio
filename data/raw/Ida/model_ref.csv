@@ -130,9 +130,9 @@ AP27, GFS Ensemble +27 member,GFS,ensemble,T,F
 AP28, GFS Ensemble +28 member,GFS,ensemble,T,F
 AP29, GFS Ensemble +29 member,GFS,ensemble,T,F
 AP30, GFS Ensemble +30 member,GFS,ensemble,T,F
-AEMN, GFS Ensemble Mean,GFS,ensemble,T,F
-AEMI, GFS Ensemble Mean (Interpolated 06 hours),GFS,ensemble,T,F
-AEM2, GFS Ensemble Mean (Interpolated 12 hours),GFS,ensemble,T,F
+AEMN, GFS Ensemble Mean,GFS,ensemble,F,F
+AEMI, GFS Ensemble Mean (Interpolated 06 hours),GFS,ensemble,F,F
+AEM2, GFS Ensemble Mean (Interpolated 12 hours),GFS,ensemble,F,F
 AMMN, GFS New Ensemble Mean,GFS,ensemble,T,F
 PRFV, Experimental NCEP FV3 Global Model (2018),FV3,global,F,F
 PRVI, Experimental NCEP FV3 Global Model (Interpolated 06 h,FV3,global,F,F
@@ -161,9 +161,9 @@ NGX2, NAVGEM/NOGAPS [GFS tracker] (Interpolated 12 hours),NAV/NO,global,F,F
 CMC , Canadian model,Canadian,global,F,F
 CMCI, Canadian model (Interpolated 06 hours),Canadian,global,F,F
 CMC2, Canadian Model (Interpolated 12 hours),Canadian,global,F,F
-CEMN, Canadian model Ensemble Mean,Canadian,ensemble,T,F
-CEMI, Canadian model Ensemble Mean (Interpolated 06 hours),Canadian,ensemble,T,F
-CEM2, Canadian model Ensemble Mean (Interpolated 12 hours),Canadian,ensemble,T,F
+CEMN, Canadian model Ensemble Mean,Canadian,ensemble,F,F
+CEMI, Canadian model Ensemble Mean (Interpolated 06 hours),Canadian,ensemble,F,F
+CEM2, Canadian model Ensemble Mean (Interpolated 12 hours),Canadian,ensemble,F,F
 CC00, Canadian model Ensemble control,Canadian,ensemble,T,F
 CP01, Canadian model Ensemble +01 member,Canadian,ensemble,T,F
 CP02, Canadian model Ensemble +02 member,Canadian,ensemble,T,F
@@ -196,11 +196,11 @@ EMHI, ECMWF model [HCCA tracker] (Interpolated 06 hrs),ECMWF,global,F,F
 EMH2, ECMWF model [HCCA tracker] (Interpolated 12 hrs),ECMWF,global,F,F
 EHHI, ECMWF model [HCCA tracker] (Interpolated 06 hrs) - va,ECMWF,global,F,F
 EHH2, ECMWF model [HCCA tracker] (Interpolated 12 hrs) - va,ECMWF,global,F,F
-EEMN, ECMWF model Ensemble Mean [NCEP tracker],ECMWF,ensemble,T,F
-EMNI, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,T,F
-EMN2, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,T,F
-EMN3, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,T,F
-EMN4, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,T,F
+EEMN, ECMWF model Ensemble Mean [NCEP tracker],ECMWF,ensemble,F,F
+EMNI, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,F,F
+EMN2, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,F,F
+EMN3, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,F,F
+EMN4, ECMWF model Ensemble Mean [NCEP tracker] (Interpolate,ECMWF,ensemble,F,F
 EC00, ECMWF model Ensemble control member [NCEP tracker],ECMWF,ensemble,T,F
 EN01, ECMWF model Ensemble +01 member [NCEP tracker],ECMWF,ensemble,T,F
 EN02, ECMWF model Ensemble +02 member [NCEP tracker],ECMWF,ensemble,T,F
@@ -388,9 +388,9 @@ H3G2, NCEP/AOML HWRF 3km (Interpolated 12 hours),HWRF,hurricane,F,F
 SPC3, CSU-CIRA SPICE statistical intensity consensus,consensus,consensus,F,F
 TV15, HFIP track consensus of >=2: AVNI/EGRI/HWFI/EMXI/GPMI,consensus,consensus,F,F
 IV15, HFIP intensity consensus of >=2: DSHP/LGEM/HWFI/GPMI/,consensus,consensus,F,F
-GPMN, GFDL Ensemble Mean,GFDL,ensemble,T,T
-GPMI, GFDL Ensemble Mean (Interpolated 06 hours),GFDL,ensemble,T,T
-GPM2, GFDL Ensemble Mean (Interpolated 12 hours),GFDL,ensemble,T,T
+GPMN, GFDL Ensemble Mean,GFDL,ensemble,F,T
+GPMI, GFDL Ensemble Mean (Interpolated 06 hours),GFDL,ensemble,F,T
+GPM2, GFDL Ensemble Mean (Interpolated 12 hours),GFDL,ensemble,F,T
 GP00, GFDL Ensemble +00 Control,GFDL,ensemble,T,T
 G00I, GFDL Ensemble +00 Control (Interpolated 06 hours),GFDL,ensemble,T,T
 G002, GFDL Ensemble +00 Control (Interpolated 12 hours),GFDL,ensemble,T,T
@@ -445,9 +445,9 @@ G162, GFDL Ensemble +16 member (Interpolated 12 hours),GFDL,ensemble,T,T
 GP17, GFDL Ensemble +17 member,GFDL,ensemble,T,T
 G17I, GFDL Ensemble +17 member (Interpolated 06 hours),GFDL,ensemble,T,T
 G172, GFDL Ensemble +17 member (Interpolated 12 hours),GFDL,ensemble,T,T
-HWMN, HWRF Ensemble Mean,HWRF,ensemble,T,F
-HWMI, HWRF Ensemble Mean (Interpolated 06 hours),HWRF,ensemble,T,F
-HWM2, HWRF Ensemble Mean (Interpolated 12 hours),HWRF,ensemble,T,F
+HWMN, HWRF Ensemble Mean,HWRF,ensemble,F,F
+HWMI, HWRF Ensemble Mean (Interpolated 06 hours),HWRF,ensemble,F,F
+HWM2, HWRF Ensemble Mean (Interpolated 12 hours),HWRF,ensemble,F,F
 IVRI, Consensus of 5: DHSP/LGEM/HHFI/CHTI+RI40 or RI35 or R,consensus,consensus,F,F
 KBMD," Beta and Advection model,  deep (NHC-NCO PARA)",BAM,,,T
 KBMM," Beta and Advection model,  medium (NHC-NCO PARA)",BAM,,,T
@@ -499,12 +499,12 @@ UE32, UKMET MOGREPS-G Ensemble +32 member,UKMET,ensemble,T,F
 UE33, UKMET MOGREPS-G Ensemble +32 member,UKMET,ensemble,T,F
 UE34, UKMET MOGREPS-G Ensemble +34 member,UKMET,ensemble,T,F
 UE35, UKMET MOGREPS-G Ensemble Previous Control member,UKMET,ensemble,T,F
-UEMN, UKMET MOGREPS-G Ensemble Mean,UKMET,ensemble,T,F
-UEMI, UKMET MOGREPS-G Ensemble Mean (Interpolated 06 hours),UKMET,ensemble,T,F
-UEM2, UKMET MOGREPS-G Ensemble Mean (Interpolated 12 hours),UKMET,ensemble,T,F
-GDMN,Google DeepMind's FNV3 Ensemble Mean,GDM,statistical,T,F
-GDMI,Google DeepMind's FNV3 Ensemble Mean,GDM,statistical,T,F
-GDM2,Google DeepMind's FNV3 Ensemble Mean,GDM,statistical,T,F
+UEMN, UKMET MOGREPS-G Ensemble Mean,UKMET,ensemble,F,F
+UEMI, UKMET MOGREPS-G Ensemble Mean (Interpolated 06 hours),UKMET,ensemble,F,F
+UEM2, UKMET MOGREPS-G Ensemble Mean (Interpolated 12 hours),UKMET,ensemble,F,F
+GDMN,Google DeepMind's FNV3 Ensemble Mean,GDM,statistical,F,F
+GDMI,Google DeepMind's FNV3 Ensemble Mean,GDM,statistical,F,F
+GDM2,Google DeepMind's FNV3 Ensemble Mean,GDM,statistical,F,F
 ,  model     n,,,,
 ,   <chr> <int>,,,,
 , 2 GFSO   3601,,,,
