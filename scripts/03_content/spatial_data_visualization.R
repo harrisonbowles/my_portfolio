@@ -26,6 +26,9 @@ library(ggspatial)
 #Select a run time
 t = as.POSIXct("2021-08-29 00:00:00", tz = "UTC")
 
+#Designate landfall time
+landfall <- as.POSIXct("2021-08-29 16:55:00", tz = "UTC")
+
 ## Load data -------------------------------------------------------------------
 model_bt <- read_rds("data/processed/model_bt_ida.rds")
 
@@ -465,6 +468,180 @@ ggsave(p_ens,
        filename = "results/img/p_ens.png",
        width = 7.6,
        height = 7)
+
+families <- c("Canadian","CLIPER","COAMPS","consensus","ECMWF","GFS","HAFS-A","HAFS-B",
+              "HMON","HWRF","NAV/NO","NAVGEM","NOAA","OTHER","SHIPS","SUNY","UKMET")
+
+by_fhour_globals <- by_fhour |> 
+  filter(category == "global")
+
+by_fhour_hur <- by_fhour |> 
+  filter(category == "hurricanes")
+
+by_fhour_ens_mean <- by_fhour |> 
+  filter(category == "ensemble",
+         member == FALSE)
+
+# Global error summaries
+
+track_err_summary <- by_fhour_globals |> 
+  group_by(family, f_hour) |> 
+  summarize(mean_err = mean(track_err, na.rm = TRUE),
+            n = n(),
+            .groups = "drop") |> 
+  filter(n >= 5) 
+
+vmax_err_summary <- by_fhour_globals |> 
+  group_by(family, f_hour) |> 
+  summarize(mean_err = mean(vmax_mae, na.rm = TRUE),
+            n = n(),
+            .groups = "drop") |> 
+  filter(n >= 5) 
+
+pres_err_summary <- by_fhour_globals |> 
+  group_by(family, f_hour) |> 
+  summarize(mean_err = mean(pres_mae, na.rm = TRUE),
+            n = n(),
+            .groups = "drop") |> 
+  filter(n >= 5) 
+
+
+################################################################################
+# NON-spatial plots go here
+################################################################################
+
+# Function to make my plot
+error_plot <- function(){
+  ggplot(by_fhour_globals, aes(f_hour, track_err, color = family)) +
+    geom_line(aes(group = interaction(model, datetime)), alpha = 0.15) +
+    geom_line(data = track_err_summary, aes(y = mean_err), linewidth = 1.2) +
+    coord_cartesian(xlim = c(0, 168), ylim = c(0, 1200), expand = FALSE) +
+    scale_x_continuous(breaks = seq(0,168, 24)) +
+    facet_wrap(~ family) +
+    labs(x = "Forecast Hour",
+         y = "Track Error (Nautical Miles)",
+         title = "Model Track Error for Hurricane IDA by Forecast Hour",
+         legend = "Model Family") +
+    theme(panel.grid.major = element_line(color = "grey70", linewidth = 0.4),
+          panel.grid.minor = element_line(color = "grey85", linewidth = 0.2, linetype = 'dotted'))
+  ggsave(glob_track_err,
+         filename = "results/img/error/glob_track_err.png",
+         width = 10,
+         height = 10)
+}
+
+# Globals
+
+# Track Error
+
+glob_track_err <- ggplot(by_fhour_globals, aes(f_hour, track_err, color = family)) +
+                         geom_line(aes(group = interaction(model, datetime)), alpha = 0.15) +
+                         geom_line(data = track_err_summary, aes(y = mean_err), linewidth = 1.2) +
+                         coord_cartesian(xlim = c(0, 168), ylim = c(0, 1200), expand = FALSE) +
+                         scale_x_continuous(breaks = seq(0,168, 24)) +
+                         facet_wrap(~ family) +
+                         labs(x = "Forecast Hour",
+                              y = "Track Error (Nautical Miles)",
+                              title = "Model Track Error for Hurricane IDA by Forecast Hour",
+                              legend = "Model Family") +
+                         theme(panel.grid.major = element_line(color = "grey70", linewidth = 0.4),
+                               panel.grid.minor = element_line(color = "grey85", linewidth = 0.2, linetype = 'dotted'))
+ggsave(glob_track_err,
+       filename = "results/img/error/glob_track_err.png",
+       width = 10,
+       height = 10)
+
+# Vmax Error
+
+glob_vmax_err <- ggplot(by_fhour_globals, aes(f_hour, vmax_mae, color = family)) +
+                        geom_line(aes(group = interaction(model, datetime)), alpha = 0.15) +
+                        geom_line(data = vmax_err_summary, aes(y = mean_err), linewidth = 1.2) +
+                        coord_cartesian(xlim = c(0, 168), ylim = c(0, 100), expand = FALSE) +
+                        scale_x_continuous(breaks = seq(0,168, 24)) +
+                        facet_wrap(~ family) +
+                        labs(x = "Forecast Hour",
+                             y = "Max Wind Error (kts)",
+                             title = "Model Max Wind Error for Hurricane IDA by Forecast Hour",
+                             legend = "Model Family") +
+                        theme(panel.grid.major = element_line(color = "grey70", linewidth = 0.4),
+                              panel.grid.minor = element_line(color = "grey85", linewidth = 0.2, linetype = 'dotted'))
+ggsave(glob_vmax_err,
+       filename = "results/img/error/glob_vmax_err.png",
+       width = 10,
+       height = 10)
+
+# Vmax bias
+
+glob_vmax_bias <- ggplot(by_fhour_globals, aes(f_hour, vmax_mbe, color = family)) +
+  geom_line(aes(group = interaction(model, datetime)), alpha = 0.15) +
+  geom_line(data = vmax_err_summary, aes(y = mean_err), linewidth = 1.2) +
+  coord_cartesian(xlim = c(0, 168), ylim = c(-50, 50), expand = FALSE) +
+  scale_x_continuous(breaks = seq(0,168, 24)) +
+  facet_wrap(~ family) +
+  labs(x = "Forecast Hour",
+       y = "Max Wind Bias (kts)",
+       title = "Model Max Wind Bias for Hurricane IDA by Forecast Hour",
+       legend = "Model Family") +
+  theme(panel.grid.major = element_line(color = "grey70", linewidth = 0.4),
+        panel.grid.minor = element_line(color = "grey85", linewidth = 0.2, linetype = 'dotted'))
+glob_vmax_bias
+ggsave(glob_vmax_bias,
+       filename = "results/img/error/glob_vmax_bias.png",
+       width = 10,
+       height = 10)
+
+# Pres Error
+
+glob_pres_err <- ggplot(by_fhour_globals, aes(f_hour, pres_mae, color = family)) +
+                        geom_line(aes(group = interaction(model, datetime)), alpha = 0.15) +
+                        geom_line(data = pres_err_summary, aes(y = mean_err), linewidth = 1.2) +
+                        coord_cartesian(xlim = c(0, 168), ylim = c(0, 100), expand = FALSE) +
+                        scale_x_continuous(breaks = seq(0,168, 24)) +
+                        facet_wrap(~ family) +
+                        labs(x = "Forecast Hour",
+                             y = "Pressure Error (hPa)",
+                             title = "Model Pressure Error for Hurricane IDA by Forecast Hour",
+                             legend = "Model Family") +
+                        theme(panel.grid.major = element_line(color = "grey70", linewidth = 0.4),
+                              panel.grid.minor = element_line(color = "grey85", linewidth = 0.2, linetype = 'dotted'))
+ggsave(glob_pres_err,
+       filename = "results/img/error/glob_pres_err.png",
+       width = 10,
+       height = 10)
+
+# Total Error
+
+glob_tot_err <- ggplot(by_fhour_globals, aes(f_hour, pres_mae, color = family)) +
+  geom_line(aes(group = interaction(model, datetime)), alpha = 0.15) +
+  geom_line(data = pres_err_summary, aes(y = mean_err), linewidth = 1.2) +
+  coord_cartesian(xlim = c(0, 168), ylim = c(0, 100), expand = FALSE) +
+  scale_x_continuous(breaks = seq(0,168, 24)) +
+  facet_wrap(~ family) +
+  labs(x = "Forecast Hour",
+       y = "Average Error",
+       title = "Average Pressure, Vmax, and Track Error for Hurricane IDA by Forecast Hour",
+       legend = "Model Family") +
+  theme(panel.grid.major = element_line(color = "grey70", linewidth = 0.4),
+        panel.grid.minor = element_line(color = "grey85", linewidth = 0.2, linetype = 'dotted'))
+ggsave(glob_pres_err,
+       filename = "results/img/error/glob_tot_err.png",
+       width = 10,
+       height = 10)
+
+# Ens Mean Track Error
+
+ggplot(by_fhour_ens_mean, aes(f_hour, track_err, color = family)) +
+  geom_line(aes(group = interaction(model, datetime)), alpha = 0.15) +
+  geom_line(data = err_summary, aes(y = mean_err), linewidth = 1.2) +
+  coord_cartesian(xlim = c(0, 168), ylim = c(0, 1200), expand = FALSE) +
+  scale_x_continuous(breaks = seq(0,168, 24)) +
+  facet_wrap(~ family) +
+  labs(x = "Forecast Hour",
+       y = "Track Error (Nautical Miles)",
+       title = "Model Track Error for Hurricane IDA by Forecast Hour",
+       legend = "Model Family") +
+  theme(panel.grid.major = element_line(color = "grey70", linewidth = 0.4),
+        panel.grid.minor = element_line(color = "grey85", linewidth = 0.2, linetype = 'dotted'))
 
 # EXPORT #######################################################################
 
