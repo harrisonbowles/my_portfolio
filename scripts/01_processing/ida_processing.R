@@ -98,12 +98,13 @@ model_bt <- left_join(bt, model_join, by = join_by(valid_time),
          pres_err  = abs(pres_bias))
 
 by_fhour <- model_bt |> 
-  group_by(family, category, model, f_hour, datetime, valid_time) |> 
+  group_by(family, category, model, f_hour, datetime, valid_time, member) |> 
   summarize(n_cases   = n(),
             track_err = mean(track_err_nmi, na.rm = TRUE),
             vmax_mae  = mean(vmax_err, na.rm = TRUE),
             vmax_mbe  = mean(vmax_bias, na.rm = TRUE),
             pres_mae  = mean(pres_err, na.rm = TRUE),
+            mean_err_score = ((vmax_mae + pres_mae + track_err)/3),
             .groups = "drop")
 
 # EXPORT #######################################################################
