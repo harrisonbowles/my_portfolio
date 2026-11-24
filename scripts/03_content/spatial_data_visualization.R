@@ -498,9 +498,21 @@ vmax_err_summary <- by_fhour_globals |>
             .groups = "drop") |> 
   filter(n >= 5) 
 
+vmax_bias_summary <- by_fhour_globals |> 
+  group_by(family, f_hour) |> 
+  summarize(mean_bias = mean(vmax_mbe, na.rm = TRUE), n = n(), .groups = "drop") |> 
+  filter(n >= 5)
+
 pres_err_summary <- by_fhour_globals |> 
   group_by(family, f_hour) |> 
   summarize(mean_err = mean(pres_mae, na.rm = TRUE),
+            n = n(),
+            .groups = "drop") |> 
+  filter(n >= 5) 
+
+tot_err_summary <- by_fhour_globals |> 
+  group_by(family, f_hour) |> 
+  summarize(mean_err = mean(mean_err_score, na.rm = TRUE),
             n = n(),
             .groups = "drop") |> 
   filter(n >= 5) 
@@ -574,7 +586,7 @@ ggsave(glob_vmax_err,
 
 glob_vmax_bias <- ggplot(by_fhour_globals, aes(f_hour, vmax_mbe, color = family)) +
   geom_line(aes(group = interaction(model, datetime)), alpha = 0.15) +
-  geom_line(data = vmax_err_summary, aes(y = mean_err), linewidth = 1.2) +
+  geom_line(data = vmax_bias_summary, aes(y = mean_bias), linewidth = 1.2) +
   coord_cartesian(xlim = c(0, 168), ylim = c(-50, 50), expand = FALSE) +
   scale_x_continuous(breaks = seq(0,168, 24)) +
   facet_wrap(~ family) +
@@ -611,10 +623,10 @@ ggsave(glob_pres_err,
 
 # Total Error
 
-glob_tot_err <- ggplot(by_fhour_globals, aes(f_hour, pres_mae, color = family)) +
+glob_tot_err <- ggplot(by_fhour_globals, aes(f_hour, mean_err_score, color = family)) +
   geom_line(aes(group = interaction(model, datetime)), alpha = 0.15) +
-  geom_line(data = pres_err_summary, aes(y = mean_err), linewidth = 1.2) +
-  coord_cartesian(xlim = c(0, 168), ylim = c(0, 100), expand = FALSE) +
+  geom_line(data = tot_err_summary, aes(y = mean_err), linewidth = 1.2) +
+  coord_cartesian(xlim = c(0, 168), ylim = c(0, 400), expand = FALSE) +
   scale_x_continuous(breaks = seq(0,168, 24)) +
   facet_wrap(~ family) +
   labs(x = "Forecast Hour",
@@ -623,7 +635,7 @@ glob_tot_err <- ggplot(by_fhour_globals, aes(f_hour, pres_mae, color = family)) 
        legend = "Model Family") +
   theme(panel.grid.major = element_line(color = "grey70", linewidth = 0.4),
         panel.grid.minor = element_line(color = "grey85", linewidth = 0.2, linetype = 'dotted'))
-ggsave(glob_pres_err,
+ggsave(glob_tot_err,
        filename = "results/img/error/glob_tot_err.png",
        width = 10,
        height = 10)
