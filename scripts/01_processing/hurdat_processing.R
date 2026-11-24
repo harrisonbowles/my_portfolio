@@ -63,5 +63,5 @@ save_storm <- function(id) {
   this_storm <- track |> 
     filter(storm_id == id)
  write_rds(this_storm,
-           paste0("data/processed/storms_raw/",str_to_lower(unique(this_storm$name)),unique(this_storm$season),".rds"))
+           paste0("data/processed/storms_obs/",str_to_lower(unique(this_storm$name)),unique(this_storm$season),".rds"))
 }
