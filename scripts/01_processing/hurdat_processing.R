@@ -17,6 +17,8 @@
 library(tidyverse)
 library(janitor)
 
+storm_id <- "al092021" #Hard-coded for now; meant to be queried by the user
+
 ## Load data -------------------------------------------------------------------
 url <- "https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2025-092326.txt"
 
@@ -46,7 +48,7 @@ track <- lines |>
   mutate(across(date:mslp_mb, str_trim)) |> 
   # Correct the data types, set missing to NA
   mutate(
-    time_utc = ymd_hm(paste(date, time), tz = "UTC"),
+    valid_time = ymd_hm(paste(date, time), tz = "UTC"),
     season = as.integer(str_sub(storm_id, 5, 8)),
     lat = parse_number(lat) * if_else(str_ends(lat, "S"), -1, 1),
     lon = parse_number(lon) * if_else(str_ends(lon, "W"), -1, 1),
@@ -55,13 +57,15 @@ track <- lines |>
     vmax_kt = if_else(vmax_kt < 0, NA, vmax_kt),
     mslp_mb = if_else(mslp_mb < 0, NA , mslp_mb)
   ) |> 
-  select(storm_id, name, season, time_utc, time, record, status, lat, lon,
+  select(storm_id, name, season, valid_time, time, record, status, lat, lon,
          vmax_kt, mslp_mb, n_expected)
 
 # Make a function to isolate a storm by id, and save as rds
 save_storm <- function(id) {
   this_storm <- track |> 
-    filter(storm_id == id)
+    filter(storm_id == str_to_upper(id))
  write_rds(this_storm,
-           paste0("data/processed/storms_obs/",str_to_lower(unique(this_storm$name)),unique(this_storm$season),".rds"))
+           paste0("data/processed/storm_obs/",str_to_lower(id),".rds"))
 }
+
+save_storm(storm_id)
