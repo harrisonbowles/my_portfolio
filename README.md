@@ -46,89 +46,89 @@ for real time forecasting purposes.
   its data from *<https://ftp.nhc.noaa.gov/atcf/archive/2022/>*
 
 ## Repository Structure and Contents
--data/ : This will house all data used for the project
+- data/ : This will house all data used for the project
 
-  -raw/: Untouched, raw data
+  - raw/: Untouched, raw data
   
-    -*model_ref.csv:* Reference sheet for categorizing models
+    - **model_ref.csv:** Reference sheet for categorizing models
   
-  -processed/: Data that has been tidied/cleaned for analysis
+  - processed/: Data that has been tidied/cleaned for analysis
     
-    -storm_obs/
+    - storm_obs/
       
-      -*al092021.rds:* Observed tropical cyclone data for Hurricane Ida that has been
+      - **al092021.rds:** Observed tropical cyclone data for Hurricane Ida that has been
       cleaned and tidied for analysis and visualization
       
-    -storm_model/
+    - storm_model/
     
-      -*al092021.rds:* Model tropical cyclone data for Hurricane Ida that has been
+      - **al092021.rds:** Model tropical cyclone data for Hurricane Ida that has been
       cleaned and tidied for analysis and visualization
     
-  -output/: Data that has been analyzed and had necessary calculations performed on
+  - output/: Data that has been analyzed and had necessary calculations performed on
   it, ready for visualization
   
-    -*model_bt.rds:* A dataset joining observed and model datasets, as well as the
+    - **model_bt.rds:** A dataset joining observed and model datasets, as well as the
     model reference sheet. It contains all of the calculations, categories, geometry,
     datetime, and model information that will be used in the visualization process.
     
-    -*by_fhour.rds:* This takes model_bt and summarizes it by forecast hour. This allows
+    - **by_fhour.rds:** This takes model_bt and summarizes it by forecast hour. This allows
     for the analysis of different storms and models based on how much error they have
     at each forecast hour into the future.
     
-    -*obs.rds:* The observed dataset
+    - **obs.rds:* *The observed dataset
   
   
--scripts/ : This will house all R scripts used for analysis
+- scripts/ : This will house all R scripts used for analysis
 
-  -01_processing/: This will house scripts to clean and tidy datasets for analysis
+  - 01_processing/: This will house scripts to clean and tidy datasets for analysis
   
-    -*hurdat_processing.R:* This script reads in the entire HURDAT2 dataset from the 
+    - **hurdat_processing.R:** This script reads in the entire HURDAT2 dataset from the 
     server, and isolates a single storm by its ID to be exported.
     
-    -*model_processing.R:* This script reads in a dataset of tropical cyclone model
+    - **model_processing.R:** This script reads in a dataset of tropical cyclone model
     guidance given a year and an ID from ATCF. It then cleans, tidies, and exports
     it to be analyzed.
   
-  -02_analysis/: This will house scripts to analyze tidy data, performing joins and
+  - 02_analysis/: This will house scripts to analyze tidy data, performing joins and
   error calculations
     
-    -*data_analysis.R:* This script reads in model and observed tropical cyclone
+    - **data_analysis.R:** This script reads in model and observed tropical cyclone
     datasets, joins them, and performs error calculations on them to be visualized
   
-  -03_content/: This will house scripts to visualize and analyze processed data
+  - 03_content/: This will house scripts to visualize and analyze processed data
   
-    -*data_viz.R:* This script reads in the analyzed and summarized datasets and
+    - **data_viz.R:** This script reads in the analyzed and summarized datasets and
     visualizes them.
   
--results/ : This will house all output figures and tables
+- results/ : This will house all output figures and tables
 
-  -img/
+  - img/
     
-    -error/
+    - error/
     
-      -*average_of_vmax_pressure_and_track_error.png:* Average of all errors of
+      - **average_of_vmax_pressure_and_track_error.png:** Average of all errors of
       global models plotted by forecast hour
       
-      -*max_wind_bias.png:* Max wind bias (+/-) of global models plotted by forecast hour
+      - **max_wind_bias.png:** Max wind bias (+/-) of global models plotted by forecast hour
       
-      -*max_wind_error.png:* Absolute value of max wind error of global models plotted
+      - **max_wind_error.png:** Absolute value of max wind error of global models plotted
       by forecast hour
       
-      -*pressure_bias.png:* Pressure bias (+/-) of global models plotted by forecast hour
+      - **pressure_bias.png:** Pressure bias (+/-) of global models plotted by forecast hour
       
-      -*pressure_error.png:* Absolute value of pressure error of global models plotted
+      - **pressure_error.png:** Absolute value of pressure error of global models plotted
       by forecast hour
       
-      -*track_error.png:* Track error of global models plotted by forecast hour
+      - **track_error.png:** Track error of global models plotted by forecast hour
     
-    -maps/
+    - maps/
     
-      -*plot_coupled.png:* Coupled models and observed track plotted at 08-29-2021 00:00 UTC
+      - **plot_coupled.png:** Coupled models and observed track plotted at 08-29-2021 00:00 UTC
       
-      -*plot_ensemble.png:* Ensemble models and observed track plotted at 08-29-2021 00:00 UTC
+      - **plot_ensemble.png:** Ensemble models and observed track plotted at 08-29-2021 00:00 UTC
       
-      -*plot_global.png:* Global models and observed track plotted at 08-29-2021 00:00 UTC
+      - *plot_global.png:* Global models and observed track plotted at 08-29-2021 00:00 UTC
       
-      -*plot_hurricane.png:* Hurricane models and observed track plotted at 08-29-2021 00:00 UTC
+      - **plot_hurricane.png:** Hurricane models and observed track plotted at 08-29-2021 00:00 UTC
       
-      -*plot_RI.png:* Rapid Intesity models and observed track plotted at 08-29-2021 00:00 UTC
+      - **plot_RI.png:** Rapid Intesity models and observed track plotted at 08-29-2021 00:00 UTC
