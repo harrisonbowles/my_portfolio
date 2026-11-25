@@ -75,7 +75,7 @@ for real time forecasting purposes.
     for the analysis of different storms and models based on how much error they have
     at each forecast hour into the future.
     
-    - **obs.rds:* *The observed dataset
+    - **obs.rds:** The observed dataset
   
   
 - scripts/ : This will house all R scripts used for analysis
@@ -127,7 +127,7 @@ for real time forecasting purposes.
       
       - **plot_ensemble.png:** Ensemble models and observed track plotted at 08-29-2021 00:00 UTC
       
-      - *plot_global.png:* Global models and observed track plotted at 08-29-2021 00:00 UTC
+      - **plot_global.png:** Global models and observed track plotted at 08-29-2021 00:00 UTC
       
       - **plot_hurricane.png:** Hurricane models and observed track plotted at 08-29-2021 00:00 UTC
       
